@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link';
 
+
 const countries = [
   {c: 'Japan', rating: '4.5'},
   {c: 'France', capital: 'Paris', rating: '4.7'},
