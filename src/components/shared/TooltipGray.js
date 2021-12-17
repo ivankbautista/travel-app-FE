@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Tooltip = (props) => {
+export const TooltipGray = ({ children }) => {
     return (
         <span class="
         tooltip
@@ -9,7 +9,7 @@ export const Tooltip = (props) => {
         text-white text-sm
         rounded shadow-xl
         ">
-            { props.children }
+            { children }
         </span>
     )
 }
