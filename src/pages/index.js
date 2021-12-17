@@ -1,3 +1,11 @@
-import { HomePage } from '../components/Homepage';
+import HomePage from '../components/Homepage'
 
-export default HomePage;
+const Index = () => {
+  return (
+    <div>
+      <HomePage />
+    </div>
+  )
+}
+
+export default Index
