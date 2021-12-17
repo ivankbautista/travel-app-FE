@@ -1,3 +1,13 @@
-import { HomePage } from '../components/Homepage';
+import HomePage from '../components/Homepage'
+import Navbar from '../components/Navbar'
 
-export default HomePage;
+const Index = () => {
+  return (
+    <div>
+      <Navbar />
+      <HomePage />
+    </div>
+  )
+}
+
+export default Index
