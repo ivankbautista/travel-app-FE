@@ -23,7 +23,7 @@ export default function HomePage() {
       <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
         <div className='flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full'>
           {countries.map((e) => (
-            <div className='mb-3'>
+            <div className='mb-3' key={e.c}>
               <Link as={`countries/${e.c}`} href='/countries/[country]'>
                 <a>
                   <div className='p-4 mt-4 text-center border w-52 rounded-xl hover:text-white hover:bg-gray-800'>
