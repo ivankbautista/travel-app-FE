@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* tool tip setup */
+/* https://play.tailwindcss.com/2eBipAu8Bt */
+@layer components {
+    .tooltip {
+        /* @apply invisible hidden absolute; */
+        @apply invisible absolute;
+    }
+
+    .has-tooltip:hover .tooltip {
+        /* @apply visible block z-50; */
+        @apply visible z-50;
+    }
+}
