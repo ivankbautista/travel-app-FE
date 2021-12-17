@@ -27,7 +27,7 @@ export function HomePage() {
             <div className="mb-3">
               <Link as={`countries/${e.c}`} href="/countries/[country]">
                   <a>
-                    <div className="p-4 mt-4 text-center border w-52 rounded-xl hover:text-white hover:bg-gray-800">
+                    <div className="p-4 mt-4 text-center border w-52 rounded-xl hover:text-white hover:bg-atlas-600">
                       <div>{e.c}</div>
                       <div>{e.capital}</div>
                       <div>Rating: {e.rating}</div>
