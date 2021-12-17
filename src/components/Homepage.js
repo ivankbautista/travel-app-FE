@@ -19,7 +19,6 @@ export default function HomePage() {
       <p className='mt-10 text-3xl text-center text-rose-500 font-bold underline'>
         Hi team! Here's our Homepage!
       </p>
-
       <main className='flex flex-col items-center justify-center w-full flex-1 px-20 text-center'>
         <div className='flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full'>
           {countries.map((e) => (
@@ -32,6 +31,7 @@ export default function HomePage() {
                     <div>Rating: {e.rating}</div>
                   </div>
                 </a>
+
               </Link>
             </div>
           ))}
