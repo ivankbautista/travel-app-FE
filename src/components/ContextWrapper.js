@@ -3,12 +3,13 @@ import { useState } from "react";
 import React from 'react'
 
 const ContextWrapper = ({ children  }) => {
+    // define states
     // e.g. const [menuItems] = useState(navigation)
     // e.g. const [color, toggleColor] = useState(true)
 
-
     return (
         <HeaderContext.Provider value={{
+            // include states here
             // EXAMPLE
             // menuItems,
             // color,
