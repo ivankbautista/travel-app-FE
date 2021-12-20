@@ -1,12 +1,15 @@
 import Navbar from '../components/Navbar'
 import '/styles/globals.css'
+import ContextWrapper from '../components/ContextWrapper'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
-      <Navbar />
-      <Component {...pageProps} />
-    </div>
+    <>
+      <ContextWrapper>
+        <Navbar />
+        <Component {...pageProps} />
+      </ContextWrapper>
+    </>
   )
 }
 
