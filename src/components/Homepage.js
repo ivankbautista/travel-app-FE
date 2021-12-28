@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link';
+import { Notification } from './shared/Notification';
+import { Alert } from './shared/Alert';
 import { CardBody } from './CardBody';
 
 const countries = [
@@ -16,7 +18,6 @@ export default function HomePage() {
         <title>Atlas</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-
       <p className='mt-10 text-3xl text-center text-rose-500 font-bold underline'>
         Hi team! Here's our Homepage!
       </p>
