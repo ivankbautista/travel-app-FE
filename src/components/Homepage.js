@@ -18,8 +18,8 @@ export default function HomePage() {
         <title>Atlas</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <Notification title="Hello!" body="nice to meet you"/>
-      <Alert title="oh no!" body="let's try"/>
+      <Notification title="congrats!" body="you logged in"/>
+      <Alert title="oh no!" body="something's wrong"/>
       <p className='mt-10 text-3xl text-center text-rose-500 font-bold underline'>
         Hi team! Here's our Homepage!
       </p>
