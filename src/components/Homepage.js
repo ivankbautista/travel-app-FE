@@ -19,7 +19,7 @@ export default function HomePage() {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <Notification title="Hello!" body="nice to meet you"/>
-      <Alert title="Another!" body="let's try"/>
+      <Alert title="oh no!" body="let's try"/>
       <p className='mt-10 text-3xl text-center text-rose-500 font-bold underline'>
         Hi team! Here's our Homepage!
       </p>
