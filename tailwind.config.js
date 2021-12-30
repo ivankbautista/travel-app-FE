@@ -1,9 +1,18 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      'sans': ['ui-sans-serif', 'system-ui'],
+      'serif': ['ui-serif'],
+      'mono': ['ui-monospace'],
+      'display': ['"Readex Pro"'],
+      'body': ['"Work Sans"'],
+    },
     extend: {
       colors: {
         'atlas': {
@@ -15,10 +24,6 @@ module.exports = {
           200: '#d5b9ea',
           100: '#f3eef8',
         },
-      fontFamily: {
-          sans: ['Inter', ...defaultTheme.fontFamily.sans],
-          header: ['Readex Pro', ...defaultTheme.fontFamily.sans],
-        },  
       },
     },
   },
