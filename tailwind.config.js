@@ -15,6 +15,10 @@ module.exports = {
           200: '#d5b9ea',
           100: '#f3eef8',
         },
+      fontFamily: {
+          sans: ['Inter', ...defaultTheme.fontFamily.sans],
+          header: ['Readex Pro', ...defaultTheme.fontFamily.sans],
+        },  
       },
     },
   },
