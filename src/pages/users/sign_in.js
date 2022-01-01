@@ -43,7 +43,7 @@ export const sign_in = () => {
                     cursor-pointer transition ease-in duration-100
                     "
                 >
-                    Create
+                    Log In
                 </button>
                 <div class="flex flex-col justify-center items-center mt-3">
                     <a href="/users/sign_up"className="
