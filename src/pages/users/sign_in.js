@@ -9,7 +9,6 @@ export const sign_in = () => {
         flex flex-col justify-center items-center
         w-full bg-atlas-700
         py-6 px-8
-        border-2
         " style={{height: "calc(100vh - 3.5rem)"}}>
             <FormContainer>
                 <h2 class="text-2xl font-semibold mb-4">
