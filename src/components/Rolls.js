@@ -11,7 +11,7 @@ import { Summary } from './rolls/ISummary';
 export const Rolls = () => {
     return (
         <div>
-            this is a roll
+            <Intro />
         </div>
     )
 }

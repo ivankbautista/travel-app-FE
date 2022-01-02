@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Navbar = () => {
   return (
-    <div className='flex bg-purple-700 justify-between items-center px-8 h-14 bg-atlas-400'>
+    <div className='flex bg-purple-700 justify-between items-center px-8 h-[8vh] bg-atlas-400'>
       <div>
         <a href='/' className='text-white'>
           {/* <img src='../../public/plane.png' alt='Logo' /> */}
