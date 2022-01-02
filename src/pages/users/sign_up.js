@@ -33,6 +33,7 @@ export const sign_up = () => {
               border-gray-300 rounded-lg
               focus:outline-none focus:border-atlas-400
               "
+              required
             ></input>
           </div>
           <div className="space-y-2 mb-4">
@@ -48,11 +49,8 @@ export const sign_up = () => {
               border-gray-300 rounded-lg
               focus:outline-none focus:border-atlas-400
               "
+              required
             ></input>
-            {/* <FormField
-              type="text"
-              placeholder="johndoe"
-            /> */}
           </div>
           <div className="space-y-2 mb-4">
             <FormFieldLabel>
@@ -67,6 +65,7 @@ export const sign_up = () => {
               border-gray-300 rounded-lg
               focus:outline-none focus:border-atlas-400
               "
+              required
             ></input>
           </div>
           <div className="space-y-2 mb-4">
@@ -82,6 +81,7 @@ export const sign_up = () => {
               border-gray-300 rounded-lg
               focus:outline-none focus:border-atlas-400
               "
+              required
             ></input>
           </div>
           <div className="space-y-2 mb-4">
@@ -97,6 +97,7 @@ export const sign_up = () => {
               border-gray-300 rounded-lg
               focus:outline-none focus:border-atlas-400
               "
+              required
             ></input>
           </div>
           <div className="space-y-2 mb-4">
@@ -112,13 +113,14 @@ export const sign_up = () => {
               border-gray-300 rounded-lg
               focus:outline-none focus:border-atlas-400
               "
+              required
             ></input>
           </div>
           <button
             type="submit"
             class="
             flex justify-center
-            mt-4 p-3 w-full 
+            mt-8 p-3 w-full 
             bg-atlas-400 hover:bg-atlas-500 
             text-gray-100 font-semibold
             rounded-lg shadow-lg

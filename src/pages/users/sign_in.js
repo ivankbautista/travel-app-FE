@@ -31,6 +31,7 @@ export const sign_in = () => {
                             border-gray-300 rounded-lg
                             focus:outline-none focus:border-atlas-400
                             "
+                            required
                         ></input>
                     </div>
                     <div className="space-y-2 mb-4">
@@ -46,6 +47,7 @@ export const sign_in = () => {
                             border-gray-300 rounded-lg
                             focus:outline-none focus:border-atlas-400
                             "
+                            required
                         ></input>
                     </div>
                     <button
