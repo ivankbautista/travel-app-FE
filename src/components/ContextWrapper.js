@@ -2,7 +2,7 @@ import HeaderContext from "../contexts/HeaderContext";
 import { useState } from "react";
 import React from 'react'
 
-const ContextWrapper = ({ children  }) => {
+const ContextWrapper = ({ children }) => {
     // define states
     // e.g. const [menuItems] = useState(navigation)
     // e.g. const [color, toggleColor] = useState(true)
