@@ -12,6 +12,7 @@ export const Rolls = () => {
     return (
         <div>
             <Intro />
+            <Distance />
         </div>
     )
 }

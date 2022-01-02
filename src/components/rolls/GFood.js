@@ -1,3 +1,6 @@
+import { RollBorder } from './RollBorder';
+
+
 export const Food = () => {
     return (
         <div>
