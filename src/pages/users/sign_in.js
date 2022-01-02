@@ -1,11 +1,45 @@
 import React from 'react'
+import axios from 'axios';
 import { FormContainer } from '../../components/shared/FormContainer'
 import { FormFieldLabel } from '../../components/shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 
 export const sign_in = () => {
+    const API = "http://localhost:3001"
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = (data) => {
+        // created user object
+        let createdUser = {
+            user: {
+                email: data.email,
+                password: data.password
+            }
+        }
+    
+        // axios
+        axios({
+            method: 'POST',
+            url: `${API}/users/sign_in`,
+            data: createdUser,
+        }).then((response) => {
+            console.log(response);
+            console.log(response.data.resource);
+            console.log(response.headers);
+            // // set headers
+            // setLoginUser(response.data.resource)
+            // setLoginHeaders(response.headers);
+        }).catch((error) => {
+          // errorList.push(...error?.response?.data?.errors?.full_messages);
+          // setErrors(errorList);
+        }).then(() => {
+          // if (errorList.length === 0) {
+          //   // redirect to homepage
+          //   // openPage("dashboard");
+    
+          //   // alert('User successfully created! You are logged in!');
+          // }
+        });
+    };
 
     return (<>
         <div class="

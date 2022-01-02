@@ -1,12 +1,50 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { useForm } from 'react-hook-form';
 import { FormContainer } from '../../components/shared/FormContainer';
 import { FormFieldLabel } from '../../components/shared/FormFieldLabel';
 
 export const sign_up = () => {
+  const API = "http://localhost:3001"
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    // created user object
+    let createdUser = {
+      "user": {
+        email: data.email,
+        password: data.password,
+        username: data.username,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        // bio: "Programming super-genius.",
+        // profile_picture: "https://avatars.githubusercontent.com/u/1279497?v=4"
+      }
+    }
+
+    // axios
+    axios({
+      method: 'POST',
+      url: `${API}/users/`,
+      data: createdUser,
+    }).then((response) => {
+      console.log(response);
+      console.log(response.data.resource);
+      console.log(response.headers);
+      // // set headers
+      // setLoginUser(response.data.resource)
+      // setLoginHeaders(response.headers);
+    }).catch((error) => {
+      // errorList.push(...error?.response?.data?.errors?.full_messages);
+      // setErrors(errorList);
+    }).then(() => {
+      // if (errorList.length === 0) {
+      //   // redirect to homepage
+      //   // openPage("dashboard");
+
+      //   // alert('User successfully created! You are logged in!');
+      // }
+    });
+  };
 
   return (<>
     <div class="
