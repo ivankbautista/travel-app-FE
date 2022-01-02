@@ -1,7 +1,13 @@
 export const Attractions = () => {
     return (
         <div>
-            test attractions
+            <div className="h-[92vh] bg-atlas-700 flex flex-wrap">
+                <RollBorder />
+                <div className="grow">
+                    attractions
+                </div>
+                <RollBorder />
+            </div>
         </div>
     )
 }

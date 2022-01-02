@@ -1,7 +1,13 @@
 export const Distance = () => {
     return (
         <div>
-            test distance
+            <div className="h-[92vh] bg-atlas-700 flex flex-wrap">
+                <RollBorder />
+                <div className="grow">
+                    distance
+                </div>
+                <RollBorder />
+            </div>
         </div>
     )
 }

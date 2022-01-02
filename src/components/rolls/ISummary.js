@@ -1,7 +1,13 @@
 export const Summary = () => {
     return (
         <div>
-            test summary
+            <div className="h-[92vh] bg-atlas-700 flex flex-wrap">
+                <RollBorder />
+                <div className="grow">
+                    summary
+                </div>
+                <RollBorder />
+            </div>
         </div>
     )
 }
