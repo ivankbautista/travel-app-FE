@@ -13,6 +13,13 @@ export const Rolls = () => {
         <div>
             <Intro />
             <Distance />
+            <Duration />
+            <Companions />
+            <Language />
+            <Weather />
+            <Food />
+            <Attractions />
+            <Summary />
         </div>
     )
 }
