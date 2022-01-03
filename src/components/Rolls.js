@@ -1,11 +1,10 @@
-import { Intro } from './rolls/AIntro';
-import { Duration } from './rolls/BDuration';
-import { Companions } from './rolls/CCompanions';
-import { Language } from './rolls/ELanguage';
-import { Weather } from './rolls/FWeather';
-import { Food } from './rolls/GFood';
-import { Attractions } from './rolls/HAttractions';
-import { Summary } from './rolls/ISummary';
+import { Intro } from './rolls/Intro';
+import { Duration } from './rolls/Duration';
+import { Companions } from './rolls/Companions';
+import { Language } from './rolls/Language';
+import { Food } from './rolls/Food';
+import { Attractions } from './rolls/Attractions';
+import { Summary } from './rolls/Summary';
 
 export const Rolls = () => {
     return (
@@ -15,7 +14,6 @@ export const Rolls = () => {
                 <Duration />
                 <Companions />
                 <Language />
-                <Weather />
                 <Food />
                 <Attractions />
                 <Summary />
