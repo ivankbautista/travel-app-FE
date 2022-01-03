@@ -2,7 +2,7 @@ import { RollBorder } from './RollBorder';
 export const Duration = () => {
     return (
         <div>
-            <div className="h-[92vh] w-full bg-atlas-700 flex flex-wrap content-evenly snap-center">
+            <div className="h-[92vh] bg-gradient-to-b from-atlas-700 to-[#26083d] flex flex-wrap snap-center">
                 <RollBorder />
                 <div className="grow flex items-center justify-center w-3/4">
                     <div className="font-extrabold text-7xl bg-clip-text text-transparent bg-gradient-to-r from-atlas-400 to-atlas-200 w-1/3 text-left mr-10">

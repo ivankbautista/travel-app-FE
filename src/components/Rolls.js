@@ -1,7 +1,6 @@
 import { Intro } from './rolls/AIntro';
-import { Distance } from './rolls/BDistance';
-import { Duration } from './rolls/CDuration';
-import { Companions } from './rolls/DCompanions';
+import { Duration } from './rolls/BDuration';
+import { Companions } from './rolls/CCompanions';
 import { Language } from './rolls/ELanguage';
 import { Weather } from './rolls/FWeather';
 import { Food } from './rolls/GFood';
