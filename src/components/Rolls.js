@@ -10,7 +10,7 @@ import { Summary } from './rolls/ISummary';
 
 export const Rolls = () => {
     return (
-        <div className="h-[92vh] bg-atlas-700 flex flex-wrap overflow-hidden">
+        <div className="h-[92vh] bg-atlas-700 flex flex-wrap overflow-hidden text-white">
             <div className="h-full w-full scroll-smooth overflow-y-scroll snap-mandatory snap-y">
                 <Intro />
                 <Distance />
