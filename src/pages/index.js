@@ -1,5 +1,6 @@
 import { server } from '../config'
 import HomePage from '../components/Homepage'
+import axios from 'axios'
 
 export default function Home({ countries }) {
   return (
