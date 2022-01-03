@@ -4,7 +4,7 @@ export const Duration = () => {
         <div>
             <div className="h-[92vh] w-full bg-atlas-700 flex flex-wrap content-evenly snap-center">
                 <RollBorder />
-                <div className="grow flex items-center justify-center w-5/6">
+                <div className="grow flex items-center justify-center w-3/4">
                     <div className="font-extrabold text-7xl bg-clip-text text-transparent bg-gradient-to-r from-atlas-400 to-atlas-200 w-1/3 text-left mr-10">
                         Your trip lasted four days.
                     </div>
