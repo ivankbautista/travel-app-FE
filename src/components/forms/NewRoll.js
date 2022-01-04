@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
-import FormContainer from '../shared/FormContainer'
-import FormFieldLabel from '../shared/FormFieldLabel'
+import { FormContainer } from '../shared/FormContainer'
+import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 
 export const NewRoll = (props) => {
@@ -34,9 +34,54 @@ export const NewRoll = (props) => {
                         required
                     >
                     </input>
+                    <FormFieldLabel>
+                        Start Date
+                    </FormFieldLabel>
+                    <input
+                        type="date"
+                        {...register("start_date")}
+                        className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                        required
+                    >
+                    </input>
+                    <FormFieldLabel>
+                        End Date
+                    </FormFieldLabel>
+                    <input
+                        type="date"
+                        {...register("end_date")}
+                        className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                        required
+                    >
+                    </input>
+                    <FormFieldLabel>
+                        Banner Image (Optional)
+                    </FormFieldLabel>
+                    <input
+                        type="string"
+                        {...register("image")}
+                        placeholder={ "Put a link to a banner image here!" }
+                        className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                        required
+                    >
+                    </input>
                 </form>
             </FormContainer>
         </div>
     </div>
   )
 }
+
+export default NewRoll
