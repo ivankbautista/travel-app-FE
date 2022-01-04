@@ -17,15 +17,15 @@ export const EntryForm = (props) => {
             <FormContainer>
                 <form onSubmit = { handleSubmit(onSubmit) }>
                     <h2 class="text-2xl font-semibold mb-4">
-                        New Roll
+                        New Entry
                     </h2>
                     <FormFieldLabel>
                         Title
                     </FormFieldLabel>
                     <input
-                        type="string"
+                        type="text"
                         {...register("title")}
-                        placeholder={ "Japan 2022" }
+                        placeholder={ "Shrine Visit" }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -35,11 +35,12 @@ export const EntryForm = (props) => {
                     >
                     </input>
                     <FormFieldLabel>
-                        Start Date
+                        Image
                     </FormFieldLabel>
                     <input
-                        type="date"
-                        {...register("start_date")}
+                        type="url"
+                        {...register("image")}
+                        placeholder={ "Place a link to an image here." }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -49,7 +50,7 @@ export const EntryForm = (props) => {
                     >
                     </input>
                     <FormFieldLabel>
-                        End Date
+                        Date
                     </FormFieldLabel>
                     <input
                         type="date"
@@ -62,13 +63,14 @@ export const EntryForm = (props) => {
                         required
                     >
                     </input>
+                    {/* Country should be a hidden field na probably? */}
                     <FormFieldLabel>
-                        Banner Image (Optional)
+                        City
                     </FormFieldLabel>
                     <input
-                        type="string"
-                        {...register("image")}
-                        placeholder={ "Put a link to a banner image here!" }
+                        type="text"
+                        {...register("city")}
+                        placeholder={ "Tokyo" }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -77,6 +79,54 @@ export const EntryForm = (props) => {
                         required
                     >
                     </input>
+                    <FormFieldLabel>
+                        Category
+                    </FormFieldLabel>
+                    <select
+                    className="
+                    w-full text-base px-4 py-2 border
+                    border-gray-300 rounded-lg
+                    focus:outline-none focus:border-atlas-400
+                    "
+                    >
+                        <option selected value="food">Food</option>
+                        <option value="attraction">Attraction</option>
+                        <option value="person">Person</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="accommodation">Accommodation</option>
+                        <option value="transportation">Transportation</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <FormFieldLabel>
+                        Description
+                    </FormFieldLabel>
+                    <textarea
+                        name="description"
+                        {...register("description")}
+                        placeholder={ "Tell us about what happened!" }
+                        className="
+                        w-full min-h-24 max-h-24 text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                        required
+                    >
+                    </textarea>
+                    <FormFieldLabel>
+                        Do you want this to be public?
+                    </FormFieldLabel>
+                    <input
+                        type="checkbox"
+                        {...register("public")}
+                        placeholder={ "false" }
+                        className="
+                        ml-2 mt-2 text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                        required
+                    >
+                    </input><br />
                 </form>
             </FormContainer>
         </div>
