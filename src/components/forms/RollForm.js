@@ -4,7 +4,7 @@ import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 
-export const NewRoll = (props) => {
+export const RollForm = (props) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {}
     return (
@@ -84,4 +84,4 @@ export const NewRoll = (props) => {
   )
 }
 
-export default NewRoll
+export default RollForm
