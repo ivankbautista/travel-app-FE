@@ -4,7 +4,7 @@ import logo from '../../../public/logo.png'
 function MyEntries() {
   return (
     <div>
-      <div className="h-screen ml-3 mt-4 pr-3 overflow-auto">
+      <div className="h-screen ml-3 mt-4 pr-3">
 
         <div className="mt-6">
           <div className="flex justify-between items-center py-3 px-3 bg-atlas-600">

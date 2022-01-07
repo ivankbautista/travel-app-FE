@@ -29,10 +29,10 @@ export const UserProfile = () => {
         </div>
         
         {/* Sidebar & Main content */}
-        <div className="flex items-center">
-          <p style={{height: "68vh"}} className="w-3/12 text-white flex flex-col justify-center items-center">bio/user stats</p>
+        <div className="flex items-center h-full">
+          <p className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">bio/user stats</p>
 
-          <div className="h-full w-9/12 bg-gray-900">
+          <div className="h-full flex-grow w-9/12 //bg-red-900">
             <button className={`${isMyEntriesPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("myEntries")}> My entries </button>
             <button className={`${isMyRollsPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3`} onClick={() => displayPage("myRolls")}>My Rolls</button>
 
