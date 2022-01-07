@@ -33,7 +33,7 @@ export const UserProfile = () => {
           <p className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">bio/user stats</p>
 
           <div className="h-full flex-grow w-9/12 //bg-red-900">
-            <button className={`${isMyEntriesPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("myEntries")}> My entries </button>
+            <button className={`${isMyEntriesPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("myEntries")}>My Entries</button>
             <button className={`${isMyRollsPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3`} onClick={() => displayPage("myRolls")}>My Rolls</button>
 
 
