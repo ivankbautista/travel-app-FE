@@ -3,7 +3,7 @@ import logo from '../../public/logo.png'
 import Link from 'next/link'
 
 const Navbar = () => {
-  let logged_in = false; // TEMP
+  let logged_in = true; // TEMP
 
   return (
     <div className='flex justify-between items-center px-8 h-14 bg-atlas-400'>
@@ -27,11 +27,18 @@ const Navbar = () => {
           </a>
         </Link>
         { logged_in ?
-          <Link href='#'>
-            <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
-              My Profile
-            </a>
-          </Link>
+          <>
+            <Link href='#'>
+              <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
+                My Profile
+              </a>
+            </Link>
+            <Link href='#'>
+              <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
+                Log Out
+              </a>
+            </Link>
+          </>
         :
           <>
             <Link href='/users/sign_in'>
