@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import logo from '../../public/logo.png'
 import Link from 'next/link'
+import Router from 'next/router';
 import { useContext } from "react"; // import Context hook
 import HeaderContext from "../contexts/HeaderContext"; // import the context you want to draw the variable from
 
@@ -41,7 +42,7 @@ const Navbar = () => {
               </a>
             </Link>
             <Link href='#'>
-              <a onClick={() => {setLoggedIn(false); setLoggedInUser(null)}} className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
+              <a onClick={() => {setLoggedIn(false); setLoggedInUser(null); Router.push('/users/sign_in');}} className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
                 Log Out
               </a>
             </Link>
