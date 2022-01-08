@@ -7,7 +7,7 @@ const ContextWrapper = ({ children }) => {
     // e.g. const [menuItems] = useState(navigation)
     // e.g. const [color, toggleColor] = useState(true)
     const [loggedInUser, setLoggedInUser] = useState(null)
-    const [loggedIn, setLoggedIn] = useState(false)
+    const [loggedIn, setLoggedIn] = useState(true)
 
     return (
         <HeaderContext.Provider value={{

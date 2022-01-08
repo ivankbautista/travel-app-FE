@@ -8,6 +8,7 @@ const Navbar = () => {
   const {
     loggedIn,
     setLoggedIn,
+    setLoggedInUser,
   } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
 
   return (
@@ -39,7 +40,7 @@ const Navbar = () => {
               </a>
             </Link>
             <Link href='#'>
-              <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
+              <a onClick={() => {setLoggedIn(false); setLoggedInUser(null)}} className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
                 Log Out
               </a>
             </Link>
