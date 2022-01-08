@@ -61,10 +61,10 @@ const Navbar = () => {
           </>
         }
       </div>
-      {/* TEMP */}
+      {/* TEMP
       <div>
         { loggedInUser && loggedInUser.email}
-      </div>
+      </div> */}
     </div>
   )
 }

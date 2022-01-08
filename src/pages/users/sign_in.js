@@ -20,6 +20,7 @@ export const sign_in = () => {
 
     const onSubmit = (data) => {
         const errorList = []
+
         // axios
         axios({
             method: 'POST',
@@ -37,10 +38,10 @@ export const sign_in = () => {
             errorList.push(...error?.response?.data?.messages);
             setErrorList(errorList);
         }).then(() => {
-          if (errorList.length === 0) {
-            // alert('User successfully created! You are logged in!');
-            Router.push('/')
-          }
+            if (errorList.length === 0) {
+                // alert('Log in successful!');
+                Router.push('/')
+            }
         });
     };
 
