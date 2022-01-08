@@ -1,48 +1,52 @@
 import React from 'react';
 import axios from 'axios';
+import Router from 'next/router';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormContainer } from '../../components/shared/FormContainer';
 import { FormFieldLabel } from '../../components/shared/FormFieldLabel';
+import { useContext } from "react";
+import HeaderContext from '../../contexts/HeaderContext';
+import ErrorDisplay from '../../components/shared/ErrorDisplay';
 
 export const sign_up = () => {
   const API = "http://localhost:3001"
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const [errorList, setErrorList] = useState([])
+  const {
+    setLoggedIn,
+    setLoggedInUser,
+  } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
+
   const onSubmit = (data) => {
-    // created user object
-    let createdUser = {
-      "user": {
-        email: data.email,
-        password: data.password,
-        username: data.username,
-        first_name: data.first_name,
-        last_name: data.last_name,
-        // bio: "Programming super-genius.",
-        // profile_picture: "https://avatars.githubusercontent.com/u/1279497?v=4"
-      }
-    }
+    const errorList = []
 
     // axios
     axios({
       method: 'POST',
       url: `${API}/users/`,
-      data: createdUser,
+      data: {
+        email: data.email,
+        username: data.username,
+        first_name: data.first_name,
+        last_name: data.last_name,
+        password: data.password,
+        password_confirmation: data.password_confirmation,
+      },
     }).then((response) => {
-      console.log(response);
-      console.log(response.data.resource);
-      console.log(response.headers);
-      // // set headers
-      // setLoginUser(response.data.resource)
-      // setLoginHeaders(response.headers);
+      console.log(response.data); //TEMP
+      setLoggedIn(true)
+      setLoggedInUser(response.data.user)
     }).catch((error) => {
-      // errorList.push(...error?.response?.data?.errors?.full_messages);
-      // setErrors(errorList);
+      console.log(error.response.data.messages); // TEMP
+      console.log(error.response); // TEMP
+      errorList.push(...error?.response?.data?.messages);
+      setErrorList(errorList);
     }).then(() => {
-      // if (errorList.length === 0) {
-      //   // redirect to homepage
-      //   // openPage("dashboard");
-
-      //   // alert('User successfully created! You are logged in!');
-      // }
+      if (errorList.length === 0) {
+        // alert('User successfully created! You are logged in!');
+        Router.push('/')
+      }
     });
   };
 
@@ -58,6 +62,11 @@ export const sign_up = () => {
           <h2 class="text-2xl font-semibold mb-4">
             Sign Up
           </h2>
+          {errorList.length > 0 &&
+            <div className="mt-3 -mb-4">
+              <ErrorDisplay errors={errorList}/>
+            </div>
+          }
           <div className="space-y-2 mb-4">
             <FormFieldLabel>
               Email Address
@@ -144,7 +153,7 @@ export const sign_up = () => {
             </FormFieldLabel>
             <input
               type="password"
-              {...register("confirm_password")}
+              {...register("password_confirmation")}
               placeholder={ "***********" }
               className="
               w-full text-base px-4 py-2 border
