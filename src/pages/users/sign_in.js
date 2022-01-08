@@ -6,12 +6,14 @@ import { FormFieldLabel } from '../../components/shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import HeaderContext from '../../contexts/HeaderContext';
+import ErrorDisplay from '../../components/shared/ErrorDisplay';
 
 export const sign_in = () => {
     const API = "http://localhost:3001"
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [errorList, setErrorList] = useState([])
     const {
+        loggedInUser,
         setLoggedIn,
         setLoggedInUser,
     } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
@@ -27,12 +29,9 @@ export const sign_in = () => {
                 password: data.password
             },
         }).then((response) => {
-            console.log(response);
-            console.log(response.data.resource);
-            console.log(response.headers);
-            // // set headers
-            // setLoginUser(response.data.resource)
-            // setLoginHeaders(response.headers);
+            console.log(response.data); //TEMP
+            setLoggedIn(true)
+            setLoggedInUser(response.data.user)
         }).catch((error) => {
             console.log(error.response.data.messages); // TEMP
             errorList.push(...error?.response?.data?.messages);
@@ -58,6 +57,11 @@ export const sign_in = () => {
                     <h2 className="text-2xl font-semibold mb-4">
                         Login
                     </h2>
+                    {errorList.length > 0 &&
+                        <div className="mt-3 -mb-4">
+                            <ErrorDisplay errors={errorList}/>
+                        </div>
+                    }
                     <div className="space-y-2 mb-4">
                         <FormFieldLabel>
                             Email Address
