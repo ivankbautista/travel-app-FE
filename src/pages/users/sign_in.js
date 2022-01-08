@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import Router from 'next/router';
 import { useState } from 'react';
 import { FormContainer } from '../../components/shared/FormContainer'
 import { FormFieldLabel } from '../../components/shared/FormFieldLabel'
@@ -13,7 +14,6 @@ export const sign_in = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [errorList, setErrorList] = useState([])
     const {
-        loggedInUser,
         setLoggedIn,
         setLoggedInUser,
     } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
@@ -37,12 +37,10 @@ export const sign_in = () => {
             errorList.push(...error?.response?.data?.messages);
             setErrorList(errorList);
         }).then(() => {
-          // if (errorList.length === 0) {
-          //   // redirect to homepage
-          //   // openPage("dashboard");
-    
-          //   // alert('User successfully created! You are logged in!');
-          // }
+          if (errorList.length === 0) {
+            // alert('User successfully created! You are logged in!');
+            Router.push('/')
+          }
         });
     };
 

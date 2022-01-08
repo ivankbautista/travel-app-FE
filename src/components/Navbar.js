@@ -7,6 +7,7 @@ import HeaderContext from "../contexts/HeaderContext"; // import the context you
 const Navbar = () => {
   const {
     loggedIn,
+    loggedInUser,
     setLoggedIn,
     setLoggedInUser,
   } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
@@ -59,6 +60,10 @@ const Navbar = () => {
             </Link>
           </>
         }
+      </div>
+      {/* TEMP */}
+      <div>
+        { loggedInUser && loggedInUser.email}
       </div>
     </div>
   )
