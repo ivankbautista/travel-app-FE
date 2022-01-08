@@ -1,26 +1,31 @@
 import React from 'react'
 import axios from 'axios';
+import { useState } from 'react';
 import { FormContainer } from '../../components/shared/FormContainer'
 import { FormFieldLabel } from '../../components/shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import HeaderContext from '../../contexts/HeaderContext';
 
 export const sign_in = () => {
     const API = "http://localhost:3001"
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [errorList, setErrorList] = useState([])
+    const {
+        setLoggedIn,
+        setLoggedInUser,
+    } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
+
     const onSubmit = (data) => {
-        // created user object
-        let createdUser = {
-            user: {
-                email: data.email,
-                password: data.password
-            }
-        }
-    
+        const errorList = []
         // axios
         axios({
             method: 'POST',
-            url: `${API}/users/sign_in`,
-            data: createdUser,
+            url: `${API}/sessions/`,
+            data: {
+                email: data.email,
+                password: data.password
+            },
         }).then((response) => {
             console.log(response);
             console.log(response.data.resource);
@@ -29,8 +34,9 @@ export const sign_in = () => {
             // setLoginUser(response.data.resource)
             // setLoginHeaders(response.headers);
         }).catch((error) => {
-          // errorList.push(...error?.response?.data?.errors?.full_messages);
-          // setErrors(errorList);
+            console.log(error.response.data.messages); // TEMP
+            errorList.push(...error?.response?.data?.messages);
+            setErrorList(errorList);
         }).then(() => {
           // if (errorList.length === 0) {
           //   // redirect to homepage
@@ -42,14 +48,14 @@ export const sign_in = () => {
     };
 
     return (<>
-        <div class="
+        <div className="
         flex flex-col justify-center items-center
         w-full bg-atlas-700
         py-6 px-8
         " style={{height: "calc(100vh - 3.5rem)"}}>
             <FormContainer>
                 <form onSubmit = { handleSubmit(onSubmit) }>
-                    <h2 class="text-2xl font-semibold mb-4">
+                    <h2 className="text-2xl font-semibold mb-4">
                         Login
                     </h2>
                     <div className="space-y-2 mb-4">
@@ -86,7 +92,7 @@ export const sign_in = () => {
                     </div>
                     <button
                         type="submit"
-                        class="
+                        className="
                         flex justify-center
                         mt-8 p-3 w-full 
                         bg-atlas-400 hover:bg-atlas-500 
@@ -97,7 +103,7 @@ export const sign_in = () => {
                     >
                         Log In
                     </button>
-                    <div class="flex flex-col justify-center items-center mt-3">
+                    <div className="flex flex-col justify-center items-center mt-3">
                         <a href="/users/sign_up"className="
                         text-atlas-400 hover:text-atlas-500
                         text-sm font-semibold
