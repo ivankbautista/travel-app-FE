@@ -16,8 +16,8 @@ const CountrySideBar = ({ color, country }) => {
                                 className={
                                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
                                     (openTab === 1
-                                        ? "text-black bg-emerald-300"
-                                        : "bg-white")
+                                        ? "text-white bg-atlas-300"
+                                        : "text-black bg-white")
                                 }
                                 onClick={() => {
                                     // e.preventDefault();
@@ -34,8 +34,8 @@ const CountrySideBar = ({ color, country }) => {
                                 className={
                                     "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal mr-3 " +
                                     (openTab === 2
-                                        ? "text-black bg-emerald-300"
-                                        : "bg-white")
+                                        ? "text-white bg-atlas-300"
+                                        : "text-black bg-white")
                                 }
                                 onClick={e => {
                                     e.preventDefault();
@@ -66,7 +66,7 @@ const CountrySideBar = ({ color, country }) => {
                                         </div>
                                         <br />
                                         <p className="text-center">Find out more from other users using the Explore tab!</p>
-                                        <button class="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md w-full">
+                                        <button className="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md w-full">
                                             Create Entry
                                         </button>
                                     </div>
@@ -86,7 +86,7 @@ const CountrySideBar = ({ color, country }) => {
                                         </div>
                                         <br />
                                         <p className="text-center">Find out more from other users using the Explore tab!</p>
-                                        <button class="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md w-full">
+                                        <button className="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md w-full">
                                             Create Entry
                                         </button>
                                     </div>
