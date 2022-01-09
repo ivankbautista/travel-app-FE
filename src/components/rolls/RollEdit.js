@@ -13,7 +13,7 @@ import ErrorDisplay from '../shared/ErrorDisplay';
 export const RollEdit = (props) => {
     const [isLoading, setLoading] = useState(true);
     const [thisRoll, setThisRoll] = useState();
-    const router = useRouter()
+    const router = useRouter();
     const roll_id = router.query.roll_id
     const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -47,7 +47,6 @@ export const RollEdit = (props) => {
             },
           }).then((response) => {
             console.log(response.data);
-            console.log("Is this working??");
             router.push(`/rolls/${response.data.roll.id}`);
           }).catch((error) => {
             console.log(error.response); // TEMP
