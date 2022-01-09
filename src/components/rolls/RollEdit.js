@@ -1,23 +1,20 @@
 import { useEffect, React } from 'react'
 import axios from 'axios';
-import { useRouter, Router } from 'next/router';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
-import Link from 'next/link'
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import HeaderContext from '../../contexts/HeaderContext';
-import ErrorDisplay from '../shared/ErrorDisplay';
 
 export const RollEdit = (props) => {
     const [isLoading, setLoading] = useState(true);
     const [thisRoll, setThisRoll] = useState();
     const router = useRouter();
     const roll_id = router.query.roll_id
-    const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
+    const { loggedInUser } = useContext(HeaderContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [errorList, setErrorList] = useState([])
     const API = "http://localhost:3001"
       useEffect(() => {
           axios({
@@ -54,18 +51,7 @@ export const RollEdit = (props) => {
     }
       
     return (
-      <div className="text-white">
-        This roll is for {thisRoll.title}!
-        <br />{thisRoll.start_date}
-        <br />{thisRoll.end_date}
-        <br />{thisRoll.image}
-        <br />
-        <Link href={ '/rolls/' + roll_id + '/edit' }>
-          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Edit</a>
-        </Link>
-        <Link href={ '/rolls/' + roll_id }>
-          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Go Back</a>
-        </Link>
+      <>
         <div className="
         flex flex-col justify-center items-center
         w-full bg-atlas-700
@@ -153,10 +139,22 @@ export const RollEdit = (props) => {
                     >
                         Update
                     </button>
+                    <button
+                        className="
+                        flex justify-center
+                        mt-8 p-3 w-full 
+                        bg-atlas-400 hover:bg-atlas-500 
+                        text-gray-100 font-semibold
+                        rounded-lg shadow-lg
+                        cursor-pointer transition ease-in duration-100
+                        "
+                    >
+                        Go Back
+                    </button>
                 </form>
             </FormContainer>
         </div>
-      </div>
+      </>
       );
 }
 

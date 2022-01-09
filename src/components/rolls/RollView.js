@@ -50,12 +50,14 @@ export const RollView = ({ roll }) => {
       <br />{roll.image}
       <br />
       <Link href={ '/rolls/' + roll_id + '/edit' }>
-        <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Edit</a>
+      <button className="bg-atlas-600 p-2 m-2 w-40 text-sm">
+            EDIT THIS ROLL
+      </button>
       </Link>
       <form className="form" onSubmit={handleSubmit(deleteRoll)}>
-          <button className="bg-white p-2 m-2" type="submit">
-            Delete this roll
-          </button>
+      <button className="bg-atlas-600 p-2 m-2 w-40 text-sm" type="submit">
+            DELETE THIS ROLL
+      </button>
         </form>
     </div>
     );
