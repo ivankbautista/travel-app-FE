@@ -15,10 +15,10 @@ export const RollView = () => {
   const [ roll, setRoll ] = useState();
   const router = useRouter();
   const roll_id = router.query.roll_id
-  console.log("This is the roll ID.")
-  console.log(roll_id)
   const API = "http://localhost:3001"
+  console.log(roll_id)
     useEffect(() => {
+      if(!router.isReady) return
         axios({
             method: 'GET',
             url: `${API}/api/v1/rolls/${roll_id}`,
@@ -28,7 +28,7 @@ export const RollView = () => {
               setRoll(response.data);
               setLoading(false);
             });
-      }, []);
+      }, [router.isReady]);
     
       if (isLoading) {
         return <div className="App">Loading...</div>;
