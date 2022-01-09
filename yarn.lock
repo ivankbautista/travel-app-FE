@@ -2802,7 +2802,15 @@
   "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.8.3.tgz"
   "version" "0.8.3"
 
-"react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@17.0.2":
+"react-world-flags@^1.4.0":
+  "integrity" "sha512-SkOzl/v6LYBphJNSeeQXTogAiLZN1Yy2HFx2Qjda/82MCWFimj9cenmOXASbfbKeqFbo/17M8HauY6mfzWmTDw=="
+  "resolved" "https://registry.npmjs.org/react-world-flags/-/react-world-flags-1.4.0.tgz"
+  "version" "1.4.0"
+  dependencies:
+    "svg-country-flags" "^1.2.7"
+    "world-countries" "^4.0.0"
+
+"react@^16.8.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^17.0.2", "react@^17.0.2 || ^18.0.0-0", "react@>= 16.8.0 || 17.x.x || 18.x.x", "react@>=0.14", "react@17.0.2":
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -3163,14 +3171,11 @@
   dependencies:
     "has-flag" "^4.0.0"
 
-<<<<<<< HEAD
-=======
 "svg-country-flags@^1.2.7":
   "integrity" "sha512-xrqwo0TYf/h2cfPvGpjdSuSguUbri4vNNizBnwzoZnX0xGo3O5nGJMlbYEp7NOYcnPGBm6LE2axqDWSB847bLw=="
   "resolved" "https://registry.npmjs.org/svg-country-flags/-/svg-country-flags-1.2.10.tgz"
   "version" "1.2.10"
 
->>>>>>> main
 "tailwindcss@^3.0.1":
   "integrity" "sha512-EVDXVZkcueZ77/zfOJw7XkzCuxe5TCiT/S9pw9P183oRzSuwMZ7WO+W/L76jbJQA5qxGeUBJOVOLVBuAUfeZ3g=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.0.1.tgz"
@@ -3402,6 +3407,11 @@
   "integrity" "sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ=="
   "resolved" "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
   "version" "1.2.3"
+
+"world-countries@^4.0.0":
+  "integrity" "sha512-LsFFYmggquj0U+i7VUaJOZYz5F4QNu+oceGw8odnyVHMT2LxYSdVncqdouOEnq1esr7yCakp9+3BZTztuSw1Pg=="
+  "resolved" "https://registry.npmjs.org/world-countries/-/world-countries-4.0.0.tgz"
+  "version" "4.0.0"
 
 "wrappy@1":
   "integrity" "sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8="
