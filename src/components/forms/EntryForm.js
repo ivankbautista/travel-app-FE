@@ -8,7 +8,7 @@ export const EntryForm = (props) => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {}
     return (
-    <div>
+    <>
         <div class="
         flex flex-col justify-center items-center
         w-full bg-atlas-700
@@ -127,10 +127,23 @@ export const EntryForm = (props) => {
                         required
                     >
                     </input><br />
+                    <button
+                        type="submit"
+                        class="
+                        flex justify-center
+                        mt-8 p-3 w-full 
+                        bg-atlas-400 hover:bg-atlas-500 
+                        text-gray-100 font-semibold
+                        rounded-lg shadow-lg
+                        cursor-pointer transition ease-in duration-100
+                        "
+                    >
+                        Create
+                    </button>
                 </form>
             </FormContainer>
         </div>
-    </div>
+    </>
   )
 }
 
