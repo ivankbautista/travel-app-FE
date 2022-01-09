@@ -1,23 +1,43 @@
-import React from 'react'
+import { useEffect, React } from 'react'
 import axios from 'axios';
-import Router from 'next/router';
+import { useRouter, Router } from 'next/router';
 import { useState } from 'react';
 import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
+import Link from 'next/link'
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import HeaderContext from '../../contexts/HeaderContext';
 import ErrorDisplay from '../shared/ErrorDisplay';
 
-export const RollCreate = (props) => {
-    const API = "http://localhost:3001"
+export const RollEdit = (props) => {
+    const [isLoading, setLoading] = useState(true);
+    const [thisRoll, setThisRoll] = useState();
+    const router = useRouter()
+    const roll_id = router.query.roll_id
     const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [errorList, setErrorList] = useState([])
-      const onSubmit = (data) => {
+    const API = "http://localhost:3001"
+      useEffect(() => {
+          axios({
+              method: 'GET',
+              url: `${API}/api/v1/rolls/${roll_id}`,
+            })
+              .then(function (response) {
+                console.log(response.data)
+                setThisRoll(response.data);
+                setLoading(false);
+              });
+        }, []);
+      
+        if (isLoading) {
+          return <div className="App">Loading...</div>;
+    }
+    const onSubmit = (data) => {
         axios({
-            method: 'POST',
-            url: `${API}/api/v1/rolls/`,
+            method: 'PATCH',
+            url: `${API}/api/v1/rolls/${roll_id}`,
             data: {
               title: data.title,
               start_date: data.start_date,
@@ -26,15 +46,27 @@ export const RollCreate = (props) => {
               user_id: loggedInUser.id,
             },
           }).then((response) => {
-            console.log(response.data); //TEMP
-            let roll_id = response.data.roll.id
-            Router.push(`/rolls/${roll_id}`);
+            console.log(response.data);
+            console.log("Is this working??");
+            router.push(`/rolls/${response.data.roll.id}`);
           }).catch((error) => {
             console.log(error.response); // TEMP
           });
     }
+      
     return (
-    <>
+      <div className="text-white">
+        This roll is for {thisRoll.title}!
+        <br />{thisRoll.start_date}
+        <br />{thisRoll.end_date}
+        <br />{thisRoll.image}
+        <br />
+        <Link href={ '/rolls/' + roll_id + '/edit' }>
+          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Edit</a>
+        </Link>
+        <Link href={ '/rolls/' + roll_id }>
+          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Go Back</a>
+        </Link>
         <div className="
         flex flex-col justify-center items-center
         w-full bg-atlas-700
@@ -51,7 +83,7 @@ export const RollCreate = (props) => {
                     <input
                         type="string"
                         {...register("title")}
-                        placeholder={ "Japan 2022" }
+                        placeholder={ thisRoll.title }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -66,6 +98,7 @@ export const RollCreate = (props) => {
                     <input
                         type="date"
                         {...register("start_date")}
+                        placeholder={ thisRoll.start_date }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -80,6 +113,7 @@ export const RollCreate = (props) => {
                     <input
                         type="date"
                         {...register("end_date")}
+                        placeholder={ thisRoll.end_date }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -94,7 +128,7 @@ export const RollCreate = (props) => {
                     <input
                         type="string"
                         {...register("image")}
-                        placeholder={ "Put a link to a banner image here!" }
+                        placeholder={ thisRoll.image }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -114,13 +148,13 @@ export const RollCreate = (props) => {
                         cursor-pointer transition ease-in duration-100
                         "
                     >
-                        Create
+                        Update
                     </button>
                 </form>
             </FormContainer>
         </div>
-    </>
-  )
+      </div>
+      );
 }
 
-export default RollCreate
+export default RollEdit
