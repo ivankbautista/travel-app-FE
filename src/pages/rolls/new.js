@@ -1,3 +1,3 @@
-import { RollCreate } from '../../components/forms/RollCreate';
+import { RollCreate } from '../../components/rolls/RollCreate';
 
 export default RollCreate;
