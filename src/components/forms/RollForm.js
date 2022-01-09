@@ -11,6 +11,9 @@ import ErrorDisplay from '../../components/shared/ErrorDisplay';
 
 export const RollForm = (props) => {
     const API = "http://localhost:3001"
+    const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
+    console.log("DATA HEREEE")
+    console.log(loggedInUser)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [errorList, setErrorList] = useState([])
       const onSubmit = (data) => {
@@ -39,14 +42,14 @@ export const RollForm = (props) => {
     }
     return (
     <>
-        <div class="
+        <div className="
         flex flex-col justify-center items-center
         w-full bg-atlas-700
         py-6 px-8
         " style={{height: "calc(100vh - 3.5rem)"}}>
             <FormContainer>
                 <form onSubmit = { handleSubmit(onSubmit) }>
-                    <h2 class="text-2xl font-semibold mb-4">
+                    <h2 className="text-2xl font-semibold mb-4">
                         New Roll
                     </h2>
                     <FormFieldLabel>
@@ -109,7 +112,7 @@ export const RollForm = (props) => {
                     </input>
                     <button
                         type="submit"
-                        class="
+                        className="
                         flex justify-center
                         mt-8 p-3 w-full 
                         bg-atlas-400 hover:bg-atlas-500 
