@@ -29,9 +29,9 @@ const Navbar = () => {
             Explore
           </a>
         </Link>
-        <Link href='#'>
+        <Link href='/rolls/new'>
           <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
-            My Rolls
+            Create Roll
           </a>
         </Link>
         { loggedIn ?
