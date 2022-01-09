@@ -1,18 +1,18 @@
 import Image from 'next/image'
 import React from "react";
 import CountrySideBar from '../components/shared/CountrySidebar'
-import CountryEntry from './shared/CountryEntry';
+import MyCountryEntryList from './shared/MyCountryEntryList';
 import ExploreList from './shared/ExploreList';
 import { useState } from 'react'
 
 const CountryPage = ({ country }) => {
 
     const [isMyExploreList, setIsMyExploreList] = useState(true);
-    const [isMyCountryEntry, setIsMyCountryEntry] = useState(false);
+    const [isMyCountryEntryList, setIsMyCountryEntryList] = useState(false);
 
     const displayPage = (page) => {
         setIsMyExploreList(page === "exploreList" ? true : false)
-        setIsMyCountryEntry(page === "countryEntry" ? true : false)
+        setIsMyCountryEntryList(page === "myCountryEntryList" ? true : false)
     }
 
     return (
@@ -31,11 +31,11 @@ const CountryPage = ({ country }) => {
                 <CountrySideBar />
 
                 <div className="h-full flex-grow w-9/12">
-                    <button className={`${isMyExploreList ? "bg-atlas-300 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("exploreList")}>Explore</button>
-                    <button className={`${isMyCountryEntry ? "bg-atlas-300 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3`} onClick={() => displayPage("countryEntry")}>My Entries</button>
+                    <button className={`${isMyExploreList ? "bg-atlas-400 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("exploreList")}>Explore</button>
+                    <button className={`${isMyCountryEntryList ? "bg-atlas-600 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3`} onClick={() => displayPage("myCountryEntryList")}>My Entries</button>
 
                     {isMyExploreList && <ExploreList />}
-                    {isMyCountryEntry && <CountryEntry />}
+                    {isMyCountryEntryList && <MyCountryEntryList />}
                 </div>
             </div>
         </div>
