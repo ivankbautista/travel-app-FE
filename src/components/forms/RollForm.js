@@ -12,8 +12,6 @@ import ErrorDisplay from '../../components/shared/ErrorDisplay';
 export const RollForm = (props) => {
     const API = "http://localhost:3001"
     const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
-    console.log("DATA HEREEE")
-    console.log(loggedInUser)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [errorList, setErrorList] = useState([])
       const onSubmit = (data) => {
@@ -25,7 +23,7 @@ export const RollForm = (props) => {
               start_date: data.start_date,
               end_date: data.end_date,
               image: data.image,
-              user_id: 1,
+              user_id: loggedInUser.id,
             },
           }).then((response) => {
             console.log("Something's right!")
