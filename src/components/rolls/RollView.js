@@ -13,6 +13,7 @@ export const RollView = ({ roll }) => {
   const router = useRouter();
   const { handleSubmit } = useForm({});
   const roll_id = router.query.roll_id
+  const next_roll = roll_id - 1;
   const API = "http://localhost:3001"
     useEffect(() => {
         axios({
@@ -50,6 +51,9 @@ export const RollView = ({ roll }) => {
       <br />
       <Link href={ '/rolls/' + roll_id + '/edit' }>
         <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Edit</a>
+      </Link>
+      <Link href={ '/rolls/' + next_roll }>
+        <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>Another Roll</a>
       </Link>
       <form className="form" onSubmit={handleSubmit(deleteRoll)}>
           <button className="bg-white p-2 m-2" type="submit">

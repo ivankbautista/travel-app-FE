@@ -83,7 +83,7 @@ export const RollEdit = (props) => {
                         type="string"
                         {...register("title")}
                         placeholder={ thisRoll.title }
-                        value = { thisRoll.title }
+                        defaultValue = { thisRoll.title }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -99,7 +99,7 @@ export const RollEdit = (props) => {
                         type="date"
                         {...register("start_date")}
                         placeholder={ thisRoll.start_date }
-                        value = { thisRoll.start_date }
+                        defaultValue = { thisRoll.start_date }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -115,7 +115,7 @@ export const RollEdit = (props) => {
                         type="date"
                         {...register("end_date")}
                         placeholder={ thisRoll.end_date }
-                        value = { thisRoll.end_date }
+                        defaultValue = { thisRoll.end_date }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -131,7 +131,7 @@ export const RollEdit = (props) => {
                         type="string"
                         {...register("image")}
                         placeholder={ thisRoll.image }
-                        value = { thisRoll.image }
+                        defaultValue = { thisRoll.image }
                         className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
