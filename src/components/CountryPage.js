@@ -31,8 +31,8 @@ const CountryPage = ({ country }) => {
                 <CountrySideBar />
 
                 <div className="h-full flex-grow w-9/12">
-                    <button className={`${isMyExploreList ? "bg-purple-400 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("exploreList")}>Explore</button>
-                    <button className={`${isMyCountryEntry ? "bg-purple-400 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3`} onClick={() => displayPage("countryEntry")}>My Entries</button>
+                    <button className={`${isMyExploreList ? "bg-atlas-300 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("exploreList")}>Explore</button>
+                    <button className={`${isMyCountryEntry ? "bg-atlas-300 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3`} onClick={() => displayPage("countryEntry")}>My Entries</button>
 
                     {isMyExploreList && <ExploreList />}
                     {isMyCountryEntry && <CountryEntry />}
