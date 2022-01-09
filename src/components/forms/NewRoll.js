@@ -7,9 +7,9 @@ import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import HeaderContext from '../../contexts/HeaderContext';
-import ErrorDisplay from '../../components/shared/ErrorDisplay';
+import ErrorDisplay from '../shared/ErrorDisplay';
 
-export const RollForm = (props) => {
+export const NewRoll = (props) => {
     const API = "http://localhost:3001"
     const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -26,15 +26,14 @@ export const RollForm = (props) => {
               user_id: loggedInUser.id,
             },
           }).then((response) => {
-            console.log("Something's right!")
             console.log(response.data); //TEMP
+            let roll_id = response.data.roll.id
           }).catch((error) => {
-            console.log("Something's wrong!")
             console.log(error.response); // TEMP
           }).then(() => {
             if (errorList.length === 0) {
-              alert('Roll created!');
-              Router.push('/');
+            //   alert('Roll created!');
+              Router.push(`/rolls/${roll_id}`);
             }
           });
     }
@@ -128,4 +127,4 @@ export const RollForm = (props) => {
   )
 }
 
-export default RollForm
+export default NewRoll
