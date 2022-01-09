@@ -3,11 +3,15 @@ import logo from '../../public/logo.png'
 import MyEntries from './shared/MyEntries'
 import MyRolls from './shared/MyRolls'
 import { useState } from 'react'
-
+import { useContext } from "react";
+import HeaderContext from '../contexts/HeaderContext'
 export const UserProfile = () => {
-  
   const [isMyEntriesPage, setIsMyEntriesPage] = useState(true);
   const [isMyRollsPage, setIsMyRollsPage] = useState(false);
+
+  const {
+    loggedInUser,
+} = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
 
   const displayPage = (page) => {
     setIsMyEntriesPage(page === "myEntries" ? true : false)
@@ -23,8 +27,8 @@ export const UserProfile = () => {
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
           <h1 className="text-white text-7xl">Leandre Kiu</h1>
           <div className="flex justify-between w-56 h-1/4">
-            <button><a href="#" className="p-3 text-white bg-blue-500 rounded">Create Roll</a></button>
-            <button><a href="#" className="p-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+            <button><a href={"/rolls/new"} className="p-3 text-white bg-blue-500 rounded">Create Roll</a></button>
+            <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
           </div>
         </div>
         
