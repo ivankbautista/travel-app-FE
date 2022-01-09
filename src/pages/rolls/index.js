@@ -1,3 +1,3 @@
-import { RollForm } from '../../components/forms/RollForm';
+import { RollsIndex } from '../../components/rolls/RollsIndex';
 
-export default RollForm;
+export default RollsIndex;

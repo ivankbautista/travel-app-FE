@@ -1,12 +1,42 @@
 import React from 'react'
 import axios from 'axios';
+import Router from 'next/router';
+import { useState } from 'react';
 import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import HeaderContext from '../../contexts/HeaderContext';
+import ErrorDisplay from '../../components/shared/ErrorDisplay';
 
 export const RollForm = (props) => {
+    const API = "http://localhost:3001"
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = (data) => {}
+    const [errorList, setErrorList] = useState([])
+      const onSubmit = (data) => {
+        axios({
+            method: 'POST',
+            url: `${API}/api/v1/rolls/`,
+            data: {
+              title: data.title,
+              start_date: data.start_date,
+              end_date: data.end_date,
+              image: data.image,
+              user_id: 1,
+            },
+          }).then((response) => {
+            console.log("Something's right!")
+            console.log(response.data); //TEMP
+          }).catch((error) => {
+            console.log("Something's wrong!")
+            console.log(error.response); // TEMP
+          }).then(() => {
+            if (errorList.length === 0) {
+              alert('Roll created!');
+              Router.push('/');
+            }
+          });
+    }
     return (
     <>
         <div class="
