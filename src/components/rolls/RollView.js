@@ -36,7 +36,10 @@ export const RollView = ({ roll }) => {
       return (
         <div className="text-white">
           This roll is for {roll.title}!
-      </div>
+          <br />{roll.start_date}
+          <br />{roll.end_date}
+          <br />{roll.image}
+    </div>
     );
 }
 
