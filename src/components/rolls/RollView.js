@@ -8,13 +8,15 @@ import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 
-export const RollView = ({ roll }) => {
+export const RollView = () => {
   const [isLoading, setLoading] = useState(true);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const [roll, setRoll] = useState();
+  const [ roll, setRoll ] = useState();
   const router = useRouter();
   const roll_id = router.query.roll_id
+  console.log("This is the roll ID.")
+  console.log(roll_id)
   const API = "http://localhost:3001"
     useEffect(() => {
         axios({
@@ -58,8 +60,14 @@ export const RollView = ({ roll }) => {
           image: data.image,
         },
       }).then((response) => {
-        console.log(response.data);
-        router.reload(window.location.pathname)
+        console.log(response.data)
+        var new_roll = response.data.roll
+        roll.image = new_roll.image
+        roll.title = new_roll.title
+        roll.start_date = new_roll.start_date
+        roll.end_date = new_roll.end_date
+        
+        ;
       }).catch((error) => {
         console.log(error.response); // TEMP
       });
