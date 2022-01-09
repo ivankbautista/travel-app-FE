@@ -28,13 +28,9 @@ export const RollCreate = (props) => {
           }).then((response) => {
             console.log(response.data); //TEMP
             let roll_id = response.data.roll.id
+            Router.push(`/rolls/${roll_id}`)
           }).catch((error) => {
             console.log(error.response); // TEMP
-          }).then(() => {
-            if (errorList.length === 0) {
-            //   alert('Roll created!');
-              Router.push(`/rolls/${roll_id}`);
-            }
           });
     }
     return (

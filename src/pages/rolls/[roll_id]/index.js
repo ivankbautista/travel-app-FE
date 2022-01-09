@@ -1,3 +1,3 @@
-import { RollView } from '../../components/rolls/RollView';
+import { RollView } from '../../../components/rolls/RollView';
 
 export default RollView;
