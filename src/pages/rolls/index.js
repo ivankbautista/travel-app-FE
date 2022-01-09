@@ -11,14 +11,8 @@ const GetRolls = (props) => {
     })
       .then(function (response) {
         console.log(response.data)
-      });    
+      });
   }
-  const config = {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded, charset=UTF-8",
-      Accept: "application/json",
-    },
-  };
   
   return (
     <div className="login-container">
