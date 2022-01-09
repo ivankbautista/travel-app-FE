@@ -3163,6 +3163,14 @@
   dependencies:
     "has-flag" "^4.0.0"
 
+<<<<<<< HEAD
+=======
+"svg-country-flags@^1.2.7":
+  "integrity" "sha512-xrqwo0TYf/h2cfPvGpjdSuSguUbri4vNNizBnwzoZnX0xGo3O5nGJMlbYEp7NOYcnPGBm6LE2axqDWSB847bLw=="
+  "resolved" "https://registry.npmjs.org/svg-country-flags/-/svg-country-flags-1.2.10.tgz"
+  "version" "1.2.10"
+
+>>>>>>> main
 "tailwindcss@^3.0.1":
   "integrity" "sha512-EVDXVZkcueZ77/zfOJw7XkzCuxe5TCiT/S9pw9P183oRzSuwMZ7WO+W/L76jbJQA5qxGeUBJOVOLVBuAUfeZ3g=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.0.1.tgz"

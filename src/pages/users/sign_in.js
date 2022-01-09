@@ -14,6 +14,7 @@ export const sign_in = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [errorList, setErrorList] = useState([])
     const {
+        loggedIn,
         setLoggedIn,
         setLoggedInUser,
     } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
@@ -34,11 +35,16 @@ export const sign_in = () => {
             setLoggedIn(true)
             setLoggedInUser(response.data.user)
         }).catch((error) => {
-            console.log(error.response.data.messages); // TEMP
-            errorList.push(...error?.response?.data?.messages);
-            setErrorList(errorList);
+            console.log(error)
+            if (error?.response) {
+                console.log(error.response.data.messages); // TEMP
+                errorList.push(...error?.response?.data?.messages);
+                setErrorList(errorList);
+            } else {
+                console.log(error)
+            }
         }).then(() => {
-            if (errorList.length === 0) {
+            if (errorList.length === 0 && !loggedIn) {
                 // alert('Log in successful!');
                 Router.push('/')
             }
