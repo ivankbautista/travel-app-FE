@@ -35,7 +35,8 @@ export const edit = () => {
         last_name: data.last_name,
         password: data.password,
         password_confirmation: data.password_confirmation,
-        bio: data.bio
+        bio: data.bio,
+        profile_picture: data.profile_picture,
       },
     }).then((response) => {
       console.log(response.data); //TEMP
@@ -70,6 +71,25 @@ export const edit = () => {
               <ErrorDisplay errors={errorList}/>
             </div>
           }
+
+          {/* temp, before making it uploaded */}
+          <div className="space-y-2 mb-4">
+            <FormFieldLabel>
+              Profile Picture
+            </FormFieldLabel>
+            <input
+              type="text"
+              {...register("profile_picture")}
+              defaultValue={ loggedInUser.profile_picture }
+              placeholder={ "imgur.com/myimage" }
+              className="
+              w-full text-base px-4 py-2 border
+              border-gray-300 rounded-lg
+              focus:outline-none focus:border-atlas-400
+              "
+            ></input>
+          </div>
+
           <div className="space-y-2 mb-4">
             <FormFieldLabel>
               Bio
