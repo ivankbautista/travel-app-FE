@@ -9,7 +9,7 @@ import { useContext } from "react";
 import HeaderContext from '../../contexts/HeaderContext';
 import ErrorDisplay from '../shared/ErrorDisplay';
 
-export const NewRoll = (props) => {
+export const RollCreate = (props) => {
     const API = "http://localhost:3001"
     const {loggedIn, loggedInUser, setLoggedIn, setLoggedInUser} = useContext(HeaderContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -127,4 +127,4 @@ export const NewRoll = (props) => {
   )
 }
 
-export default NewRoll
+export default RollCreate

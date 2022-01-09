@@ -1,3 +1,3 @@
-import { NewRoll } from '../../components/forms/RollForm';
+import { RollCreate } from '../../components/forms/RollCreate';
 
-export default NewRoll;
+export default RollCreate;
