@@ -4,7 +4,6 @@ import React from 'react'
 
 const ContextWrapper = ({ children }) => {
     // define states
-
     // states using localStorage
     // useEffect to ensure page loads before localStorage is called
     if(typeof window !== "undefined") {

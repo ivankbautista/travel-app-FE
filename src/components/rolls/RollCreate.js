@@ -1,22 +1,47 @@
 import React from 'react'
 import axios from 'axios';
+import Router from 'next/router';
+import { useState } from 'react';
 import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import HeaderContext from '../../contexts/HeaderContext';
 
-export const RollForm = (props) => {
+export const RollCreate = (props) => {
+    const API = "http://localhost:3001"
+    const { loggedInUser } = useContext(HeaderContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = (data) => {}
+    const [errorList, setErrorList] = useState([])
+      const onSubmit = (data) => {
+        axios({
+            method: 'POST',
+            url: `${API}/api/v1/rolls/`,
+            data: {
+              title: data.title,
+              start_date: data.start_date,
+              end_date: data.end_date,
+              image: data.image,
+              user_id: loggedInUser.id,
+            },
+          }).then((response) => {
+            console.log(response.data); //TEMP
+            let roll_id = response.data.roll.id
+            Router.push(`/rolls/${roll_id}`);
+          }).catch((error) => {
+            console.log(error.response); // TEMP
+          });
+    }
     return (
     <>
-        <div class="
+        <div className="
         flex flex-col justify-center items-center
         w-full bg-atlas-700
         py-6 px-8
         " style={{height: "calc(100vh - 3.5rem)"}}>
             <FormContainer>
                 <form onSubmit = { handleSubmit(onSubmit) }>
-                    <h2 class="text-2xl font-semibold mb-4">
+                    <h2 className="text-2xl font-semibold mb-4">
                         New Roll
                     </h2>
                     <FormFieldLabel>
@@ -79,7 +104,7 @@ export const RollForm = (props) => {
                     </input>
                     <button
                         type="submit"
-                        class="
+                        className="
                         flex justify-center
                         mt-8 p-3 w-full 
                         bg-atlas-400 hover:bg-atlas-500 
@@ -97,4 +122,4 @@ export const RollForm = (props) => {
   )
 }
 
-export default RollForm
+export default RollCreate
