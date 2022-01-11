@@ -21,7 +21,6 @@ export const RollView = (props) => {
   const roll_id = router.query.roll_id
   const API = "http://localhost:3001"
   const { loggedInUser } = useContext(HeaderContext)
-  console.log(roll_id)
   useEffect(() => {
     if (!router.isReady) return
     axios({
