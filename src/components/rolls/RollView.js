@@ -87,9 +87,10 @@ export const RollView = (props) => {
       method: 'POST',
       url: `${API}/api/v1/entries/`,
       data: {
-        title: data.title, // change this depending on columns
+        title: data.title,
         image: data.image,
         end_date: data.date,
+        country: data.country,
         city: data.city,
         category: data.category,
         description: data.description,
@@ -99,7 +100,6 @@ export const RollView = (props) => {
     }).then((response) => {
       console.log(response.data); //TEMP
       let entry_id = response.data.entry.id
-      Router.push(`/rolls/${entry_id}`);
     }).catch((error) => {
       console.log(error.response); // TEMP
     });
@@ -262,8 +262,21 @@ export const RollView = (props) => {
                   required
                 >
                 </input>
-                {/* Country should be a hidden field na probably? */}
                 <FormFieldLabel>
+                  Country
+                </FormFieldLabel>
+                <input
+                  type="text"
+                  {...register("country")}
+                  placeholder={"Japan"}
+                  className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                  required
+                >
+                </input>                <FormFieldLabel>
                   City
                 </FormFieldLabel>
                 <input
