@@ -100,6 +100,7 @@ export const RollView = (props) => {
     }).then((response) => {
       console.log(response.data); //TEMP
       let entry_id = response.data.entry.id
+      router.reload(window.location.pathname)
     }).catch((error) => {
       console.log(error.response); // TEMP
     });
