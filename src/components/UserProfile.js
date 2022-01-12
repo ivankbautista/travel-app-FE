@@ -4,6 +4,7 @@ import MyEntries from './shared/MyEntries'
 import MyRolls from './shared/MyRolls'
 import { useState, useContext } from 'react'
 import HeaderContext from '../contexts/HeaderContext'
+import Router from 'next/router'
 
 export const UserProfile = () => {
   const [isMyEntriesPage, setIsMyEntriesPage] = useState(true);
@@ -18,14 +19,16 @@ export const UserProfile = () => {
   return (
     <>
     {loggedIn && 
-        <div className="h-screen">
+          <div className="h-screen">
           <div style={{backgroundImage: `url("https://i.pinimg.com/736x/25/87/ec/2587ec34faa3b4bff7dbc7a2aa1692b1.jpg")` }} className="h-72 flex flex-col justify-center items-center">
             <Image src={logo} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/>
             {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
             <h1 className="text-white text-7xl">{loggedInUser.first_name}{' '}{loggedInUser.last_name}</h1>
             <div className="flex justify-between w-56 h-1/4">
               <button><a href="#" className="p-3 text-white bg-blue-500 rounded">Create Roll</a></button>
-              <button><a href="#" className="p-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+              { loggedInUser && Router.query.username === loggedInUser.username  && 
+              <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 m-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+              }
             </div>
           </div>
           
