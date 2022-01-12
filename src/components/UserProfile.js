@@ -5,6 +5,8 @@ import MyRolls from './shared/MyRolls'
 import { useState } from 'react'
 import { useContext } from "react";
 import HeaderContext from '../contexts/HeaderContext'
+import Router from 'next/router'
+
 export const UserProfile = () => {
   const [isMyEntriesPage, setIsMyEntriesPage] = useState(true);
   const [isMyRollsPage, setIsMyRollsPage] = useState(false);
@@ -26,9 +28,11 @@ export const UserProfile = () => {
           <Image src={logo} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/>
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
           <h1 className="text-white text-7xl">Leandre Kiu</h1>
-          <div className="flex justify-between w-56 h-1/4">
-            <button><a href={"/rolls/new"} className="p-3 text-white bg-blue-500 rounded">Create Roll</a></button>
-            <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+          <div className="flex justify-center h-1/4">
+            <button><a href={"/rolls/new"} className="p-3 m-3 text-white bg-blue-500 rounded">Create Roll</a></button>
+            { loggedInUser && Router.query.username === loggedInUser.username  && 
+              <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 m-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+            }
           </div>
         </div>
         
