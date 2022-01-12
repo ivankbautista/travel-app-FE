@@ -18,7 +18,7 @@ const Navbar = () => {
     (Router.pathname !== "/users/sign_in" && Router.pathname !== "/users/sign_up") &&
     loggedIn === false
     ) {
-      console.log(1)
+      // console.log(1)
       Router.push("/users/sign_in")
   }
 
