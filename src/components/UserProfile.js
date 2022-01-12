@@ -27,7 +27,7 @@ export const UserProfile = () => {
             <div className="flex justify-between w-56 h-1/4">
               <button><a href="#" className="p-3 text-white bg-blue-500 rounded">Create Roll</a></button>
               { loggedInUser && Router.query.username === loggedInUser.username  && 
-              <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 m-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+              <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
               }
             </div>
           </div>
