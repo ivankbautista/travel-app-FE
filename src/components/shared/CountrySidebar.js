@@ -51,6 +51,8 @@ const CountrySideBar = ({ color, country }) => {
                     <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
                         <div className="px-4 py-5 flex-auto">
                             <div className="tab-content tab-space">
+
+                                {/* Accomodation Tab */}
                                 <div className={openTab === 1 ? "block" : "hidden"} id="link1">
                                     <div>
                                         <div className="flex justify-between text-center">
@@ -66,11 +68,10 @@ const CountrySideBar = ({ color, country }) => {
                                         </div>
                                         <br />
                                         <p className="text-center">Find out more from other users using the Explore tab!</p>
-                                        <button className="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md w-full">
-                                            Create Entry
-                                        </button>
                                     </div>
                                 </div>
+
+                                {/* Activities Tab */}
                                 <div className={openTab === 2 ? "block" : "hidden"} id="link2">
                                     <div>
                                         <div className="flex justify-between text-center">
@@ -86,9 +87,6 @@ const CountrySideBar = ({ color, country }) => {
                                         </div>
                                         <br />
                                         <p className="text-center">Find out more from other users using the Explore tab!</p>
-                                        <button className="mt-4 px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium rounded-md w-full">
-                                            Create Entry
-                                        </button>
                                     </div>
                                 </div>
                             </div>
