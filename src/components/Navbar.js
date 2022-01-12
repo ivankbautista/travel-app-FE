@@ -16,7 +16,7 @@ const Navbar = () => {
   // authentication of pages (logic) - redirect to sign_in page if not signed in + not on login or sign-up pages
   if (
     (Router.pathname !== "/users/sign_in" && Router.pathname !== "/users/sign_up") &&
-    loggedIn === true
+    loggedIn === false
     ) {
       console.log(1)
       Router.push("/users/sign_in")
@@ -48,7 +48,7 @@ const Navbar = () => {
             New Roll
           </a>
         </Link>
-        { loggedIn ?
+        { loggedInUser ?
           <>
             <Link href={"/users/"+loggedInUser.id}>
               <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
