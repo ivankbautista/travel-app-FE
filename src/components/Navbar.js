@@ -50,7 +50,7 @@ const Navbar = () => {
         </Link>
         { loggedInUser ?
           <>
-            <Link href={"/users/"+loggedInUser.id}>
+            <Link href={"/users/"+loggedInUser.username}>
               <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
                 My Profile
               </a>
