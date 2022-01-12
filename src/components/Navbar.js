@@ -13,6 +13,15 @@ const Navbar = () => {
     setLoggedInUser,
   } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
 
+  // authentication of pages (logic) - redirect to sign_in page if not signed in + not on login or sign-up pages
+  if (
+    (Router.pathname !== "/users/sign_in" && Router.pathname !== "/users/sign_up") &&
+    loggedIn === true
+    ) {
+      console.log(1)
+      Router.push("/users/sign_in")
+  }
+
   return (
     <div className='flex justify-between items-center px-8 h-14 bg-atlas-400'>
       {/* logo */}
