@@ -1,11 +1,12 @@
 import { server } from '../../../config'
+import React from "react";
+import CountryPage from '../../../components/CountryPage';
+import CountrySideBar from '../../../components/shared/CountrySidebar';
 
-const country = ({ country }) => {
+const CountryIndex = ({ country }) => {
+
     return (
-        <div>
-            <h1>{country.name}</h1>
-            <p>{country.rating}</p>
-        </div>
+        <CountryPage country={country} />
     )
 }
 
@@ -35,4 +36,4 @@ export const getStaticPaths = async () => {
     }
 }
 
-export default country
+export default CountryIndex

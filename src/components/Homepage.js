@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { server } from '../config'
 import { Notification } from './shared/Notification';
 import { Alert } from './shared/Alert';
-import CountryList from './CountryList';
+import CountryList from './shared/CountryList';
 
 export default function HomePage({ countries }) {
   return (
