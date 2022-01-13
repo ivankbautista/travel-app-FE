@@ -16,12 +16,20 @@ export const UserProfile = () => {
     setIsMyRollsPage(page === "myRolls" ? true : false)
   }
 
+  console.log(loggedInUser)
+  // console.log(loggedInUser.profile_picture)
+  console.log(loggedInUser.bio)
+
+  const imageUrl = loggedInUser.profile_picture.toString()
+  console.log(imageUrl)
+
   return (
     <>
     {loggedIn && 
           <div className="h-screen">
           <div style={{backgroundImage: `url("https://i.pinimg.com/736x/25/87/ec/2587ec34faa3b4bff7dbc7a2aa1692b1.jpg")` }} className="h-72 flex flex-col justify-center items-center">
-            <Image src={logo} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/>
+            <Image src={imageUrl} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/>
+            {/* <img src={imageUrl} alt="Profile Picture" height={120} width={100} className="rounded-full mt-3" /> */}
             {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
             <h1 className="text-white text-7xl">{loggedInUser.first_name}{' '}{loggedInUser.last_name}</h1>
             <div className="flex justify-between w-56 h-1/4">
@@ -33,7 +41,7 @@ export const UserProfile = () => {
           </div>
           
           <div className="flex items-center h-full">
-            <p className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">bio/user stats</p>
+            <p className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">{loggedInUser.bio}</p>
 
             <div className="h-full flex-grow w-9/12 //bg-red-900">
               <button className={`${isMyEntriesPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("myEntries")}>My Entries</button>
