@@ -87,6 +87,9 @@ export const EntryView = (props) => {
             {/* Insert Card Design here */}
 
 
+            {/* Create edit button  */}
+            {/* Create delete button */}
+
             {/* Edit Modal within Card */}
             {editEntryModalIsOpen && <Modal setEditModalIsOpen={setEditModalIsOpen}>
                 <div className="
