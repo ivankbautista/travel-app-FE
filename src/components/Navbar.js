@@ -78,7 +78,7 @@ const Navbar = () => {
       </div>
       {/* TEMP */}
       <div>
-        { loggedInUser && loggedInUser.email}
+        { loggedInUser && <p className="text-white">{loggedInUser.email}</p>}
       </div>
     </div>
   )
