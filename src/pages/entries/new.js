@@ -1,3 +1,3 @@
-import { EntryForm } from '../../components/forms/EntryForm';
+import EntryCreate from '../../components/entries/EntryCreate'
 
-export default EntryForm;
+export default EntryCreate;
