@@ -336,7 +336,6 @@ export const RollView = (props) => {
                         border-gray-300 rounded-lg
                         focus:outline-none focus:border-atlas-400
                         "
-                  required
                 >
                 </input><br />
                 <button
