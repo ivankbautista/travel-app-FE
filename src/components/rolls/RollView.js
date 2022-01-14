@@ -7,6 +7,8 @@ import Modal from '../shared/Modal';
 import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
+import { useContext } from 'react';
+import HeaderContext from '../../contexts/HeaderContext';
 
 export const RollView = () => {
   const [isLoading, setLoading] = useState(true);
@@ -16,33 +18,39 @@ export const RollView = () => {
   const router = useRouter();
   const roll_id = router.query.roll_id
   const API = "http://localhost:3001"
-  console.log(roll_id)
-    useEffect(() => {
-      if(!router.isReady) return
-        axios({
-            method: 'GET',
-            url: `${API}/api/v1/rolls/${roll_id}`,
-          })
-            .then(function (response) {
-              console.log(response.data)
-              setRoll(response.data);
-              setLoading(false);
-            });
-      }, [router.isReady]);
+  const {
+    loggedInUser,
+  } = useContext(HeaderContext) 
+
+  useEffect(() => {
+    if(!router.isReady) return
+    axios({
+      method: 'GET',
+      url: `${API}/api/v1/rolls/${roll_id}`,
+    }).then(function (response) {
+      console.log(response.data)
+      setRoll(response.data);
+      setLoading(false);
+    });
+  }, [router.isReady]);
     
-      if (isLoading) {
-        return <div className="App">Loading...</div>;
+  if (isLoading) {
+    return <div className="App">Loading...</div>;
   }
 
   const deleteRoll = (data) => {
     axios({
       method: 'DELETE',
+      data: {
+        api_key: loggedInUser.api_key,
+      },
       url: `${API}/api/v1/rolls/${roll_id}`,
-    })
-      .then(function (response) {
-        console.log(response.data)
-        router.push(`/rolls/new`)
-      });
+    }).then(function (response) {
+      console.log(response.data)
+      router.push(`/rolls/new`)
+    }).catch((error) => {
+      console.log(error.response); // TEMP
+    });
   }
 
   const editRoll = () => {
@@ -54,6 +62,8 @@ export const RollView = () => {
         method: 'PATCH',
         url: `${API}/api/v1/rolls/${roll_id}`,
         data: {
+          api_key: loggedInUser.api_key,
+          user_id: loggedInUser.id,
           title: data.title,
           start_date: data.start_date,
           end_date: data.end_date,
@@ -76,14 +86,18 @@ export const RollView = () => {
   return (
     <>
      {/* Profile header  */}
-     <div className="h-screen">
+      <div className="h-screen">
         <div style={{backgroundImage: `url(${roll.image})` }} className="h-72 flex flex-col justify-center items-center">
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
           <h1 className="text-white text-7xl">{roll.title}</h1>
           <h1 className="text-white text-2xl">{roll.start_date} to {roll.end_date}</h1>
           <div className="flex justify-between w-56 h-1/4">
-          <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
-          <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
+          { loggedInUser?.id === roll?.user_id &&
+            <>
+              <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
+              <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
+            </>
+          }
           </div>
         </div>
         {editModalIsOpen && <Modal setShowModal={setEditModalIsOpen}>
