@@ -49,7 +49,8 @@ export const edit = () => {
     }).then(() => {
       if (errorList.length === 0) {
         // alert('User successfully created! You are logged in!');
-        Router.reload(window.location.pathname)
+        // Router.reload(window.location.pathname)
+        Router.push('/users/'+loggedInUser.username)
       }
     });
   };
