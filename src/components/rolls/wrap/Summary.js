@@ -45,10 +45,10 @@ export const Summary = (props) => {
         <div className="h-[92vh] bg-gradient-to-b from-atlas-600 to-atlas-700 flex flex-wrap snap-center">
             <RollBorder />
             <div className="grow flex items-center justify-center w-[80vw] flex-wrap">
-                <div className="w-[30vw] m-2">
-                    <div className="w-[30vw] text-center">
-                        <div className="rounded-md w-[30vw] h-[30vw] bg-cover" style={{ backgroundImage:`url("${props.headers.image}")` }}></div>
-                        <div className="font-extrabold text-7xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 text-center">
+                <div className="w-[29vw] m-2 h-[73vh] flex flex-col items-center justify-center">
+                    <div className="w-[29vw] text-center flex flex-col items-center justify-center">
+                        <div className="rounded-md w-[29vw] h-[29vw] bg-cover" style={{ backgroundImage:`url("${props.headers.image}")` }}></div>
+                        <div className="font-extrabold text-6xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 text-center">
                             {props.headers.title.toUpperCase()}
                         </div>
                     </div>
