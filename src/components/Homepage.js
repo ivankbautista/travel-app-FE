@@ -1,16 +1,11 @@
-import Head from 'next/head'
 import { server } from '../config'
 import { Notification } from './shared/Notification';
 import { Alert } from './shared/Alert';
-import CountryList from './CountryList';
+import CountryList from './shared/CountryList';
 
 export default function HomePage({ countries }) {
   return (
     <div>
-      <Head>
-        <title>Atlas</title>
-        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
-      </Head>
       <p className='mt-10 text-3xl text-center text-rose-500 font-bold underline font-display'>
         Hi team! Here's our Homepage!
       </p>

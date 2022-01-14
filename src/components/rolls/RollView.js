@@ -7,7 +7,11 @@ import Modal from '../shared/Modal';
 import { FormContainer } from '../shared/FormContainer'
 import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
+<<<<<<< HEAD
 import { useContext } from "react";
+=======
+import { useContext } from 'react';
+>>>>>>> main
 import HeaderContext from '../../contexts/HeaderContext';
 
 export const RollView = (props) => {
@@ -20,20 +24,22 @@ export const RollView = (props) => {
   const router = useRouter();
   const roll_id = router.query.roll_id
   const API = "http://localhost:3001"
-  const { loggedInUser } = useContext(HeaderContext)
+  const {
+    loggedInUser,
+  } = useContext(HeaderContext) 
+
   useEffect(() => {
-    if (!router.isReady) return
+    if(!router.isReady) return
     axios({
       method: 'GET',
       url: `${API}/api/v1/rolls/${roll_id}`,
-    })
-      .then(function (response) {
-        console.log(response.data)
-        setRoll(response.data);
-        setLoading(false);
-      });
+    }).then(function (response) {
+      console.log(response.data)
+      setRoll(response.data);
+      setLoading(false);
+    });
   }, [router.isReady]);
-
+    
   if (isLoading) {
     return <div className="App">Loading...</div>;
   }
@@ -41,12 +47,16 @@ export const RollView = (props) => {
   const deleteRoll = (data) => {
     axios({
       method: 'DELETE',
+      data: {
+        api_key: loggedInUser.api_key,
+      },
       url: `${API}/api/v1/rolls/${roll_id}`,
-    })
-      .then(function (response) {
-        console.log(response.data)
-        router.push(`/rolls/new`)
-      });
+    }).then(function (response) {
+      console.log(response.data)
+      router.push(`/rolls/new`)
+    }).catch((error) => {
+      console.log(error.response); // TEMP
+    });
   }
 
   const editRoll = () => {
@@ -55,22 +65,24 @@ export const RollView = (props) => {
 
   const onEditSubmit = (data) => {
     axios({
-      method: 'PATCH',
-      url: `${API}/api/v1/rolls/${roll_id}`,
-      data: {
-        title: data.title,
-        start_date: data.start_date,
-        end_date: data.end_date,
-        image: data.image,
-      },
-    }).then((response) => {
-      console.log(response.data)
-      var new_roll = response.data.roll
-      roll.image = new_roll.image
-      roll.title = new_roll.title
-      roll.start_date = new_roll.start_date
-      roll.end_date = new_roll.end_date
-
+        method: 'PATCH',
+        url: `${API}/api/v1/rolls/${roll_id}`,
+        data: {
+          api_key: loggedInUser.api_key,
+          user_id: loggedInUser.id,
+          title: data.title,
+          start_date: data.start_date,
+          end_date: data.end_date,
+          image: data.image,
+        },
+      }).then((response) => {
+        console.log(response.data)
+        var new_roll = response.data.roll
+        roll.image = new_roll.image
+        roll.title = new_roll.title
+        roll.start_date = new_roll.start_date
+        roll.end_date = new_roll.end_date
+        
         ;
     }).catch((error) => {
       console.log(error.response); // TEMP
@@ -112,16 +124,19 @@ export const RollView = (props) => {
 
   return (
     <>
-      {/* Profile header  */}
+     {/* Profile header  */}
       <div className="h-screen">
-        <div style={{ backgroundImage: `url(${roll.image})` }} className="h-72 flex flex-col justify-center items-center">
+        <div style={{backgroundImage: `url(${roll.image})` }} className="h-72 flex flex-col justify-center items-center">
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
           <h1 className="text-white text-7xl">{roll.title}</h1>
           <h1 className="text-white text-2xl">{roll.start_date} to {roll.end_date}</h1>
           <div className="flex justify-between w-56 h-1/4">
-            <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
-            <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
-            <button onClick={rollUp}><a className="p-3 text-white bg-blue-500 rounded">Roll It</a></button>
+          { loggedInUser?.id === roll?.user_id &&
+            <>
+              <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
+              <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
+            </>
+          }
           </div>
         </div>
         {editModalIsOpen && <Modal setShowModal={setEditModalIsOpen}>

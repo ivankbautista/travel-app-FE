@@ -13,6 +13,15 @@ const Navbar = () => {
     setLoggedInUser,
   } = useContext(HeaderContext) // destructing to get menuItems from HeaderContext
 
+  // authentication of pages (logic) - redirect to sign_in page if not signed in + not on login or sign-up pages
+  if (
+    (Router.pathname !== "/users/sign_in" && Router.pathname !== "/users/sign_up") &&
+    loggedIn === false
+    ) {
+      // console.log(1)
+      Router.push("/users/sign_in")
+  }
+
   return (
     <div className='flex justify-between items-center px-8 h-14 bg-atlas-400'>
       {/* logo */}
@@ -39,9 +48,9 @@ const Navbar = () => {
             New Roll
           </a>
         </Link>
-        { loggedIn ?
+        { loggedInUser ?
           <>
-            <Link href='#'>
+            <Link href={"/users/"+loggedInUser.username}>
               <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
                 My Profile
               </a>
@@ -67,6 +76,7 @@ const Navbar = () => {
           </>
         }
       </div>
+      {/* TEMP */}
       <div>
         { loggedInUser && loggedInUser.email}
       </div>
