@@ -1,10 +1,10 @@
-import Image from 'next/image'
-import logo from '../../public/logo.png'
 import MyEntries from './shared/MyEntries'
 import MyRolls from './shared/MyRolls'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
+import axios from 'axios'
 import HeaderContext from '../contexts/HeaderContext'
 import Router from 'next/router'
+import { useRouter } from 'next/router'
 
 export const UserProfile = () => {
   const [isMyEntriesPage, setIsMyEntriesPage] = useState(true);
@@ -16,40 +16,61 @@ export const UserProfile = () => {
     setIsMyRollsPage(page === "myRolls" ? true : false)
   }
 
-  console.log(loggedInUser)
-  // console.log(loggedInUser.profile_picture)
-  console.log(loggedInUser.bio)
+  const router = useRouter();
+  const [isLoading, setLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState();
+  const username = router.query.username
+  console.log(username)
 
-  const imageUrl = loggedInUser.profile_picture.toString()
-  console.log(imageUrl)
+  const API = "http://localhost:3001"
+
+  useEffect(() => {
+    if(!router.isReady) return
+      axios({
+        method: 'GET',
+        url: `${API}/users/${username}`,
+      })
+        .then(function (response) {
+          console.log(response.data)
+          setCurrentUser(response.data)
+          setLoading(false)
+        })
+    }, [router.isReady]);
+
+    if (isLoading) {
+      return <div className="App text-white">Loading...</div>
+    }
 
   return (
     <>
     {loggedIn && 
           <div className="h-screen">
           <div style={{backgroundImage: `url("https://i.pinimg.com/736x/25/87/ec/2587ec34faa3b4bff7dbc7a2aa1692b1.jpg")` }} className="h-72 flex flex-col justify-center items-center">
-            <Image src={imageUrl} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/>
+            {/* <Image src={imageUrl} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/> */}
             {/* <img src={imageUrl} alt="Profile Picture" height={120} width={100} className="rounded-full mt-3" /> */}
             {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
-            <h1 className="text-white text-7xl">{loggedInUser.first_name}{' '}{loggedInUser.last_name}</h1>
+            <h1 className="text-white text-7xl">{currentUser.first_name}{' '}{currentUser.last_name}</h1>
             <div className="flex justify-between w-56 h-1/4">
-              <button><a href="#" className="p-3 text-white bg-blue-500 rounded">Create Roll</a></button>
-              { loggedInUser && Router.query.username === loggedInUser.username  && 
-              <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 text-white bg-blue-500 rounded">Edit Profile</a></button>
+              { 
+                loggedInUser && Router.query.username === loggedInUser.username && 
+                <button><a href={"/rolls/new"} className="p-3 text-white bg-atlas-400 hover:bg-atlas-500 rounded">Create Roll</a></button> }
+              { 
+                loggedInUser && Router.query.username === loggedInUser.username && 
+                <button><a href={"/users/"+loggedInUser.id+"/edit"} className="p-3 text-white bg-atlas-400 hover:bg-atlas-500 rounded">Edit Profile</a></button>
               }
             </div>
           </div>
           
           <div className="flex items-center h-full">
-            <p className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">{loggedInUser.bio}</p>
+            <p className="h-screen bg-gray-600 w-3/12 text-white mt-5 flex flex-col justify-center items-center justify-self-start self-start">{currentUser.bio}</p>
 
-            <div className="h-full flex-grow w-9/12 //bg-red-900">
-              <button className={`${isMyEntriesPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("myEntries")}>My Entries</button>
+            <div className="h-full flex-grow w-9/12 ml-5 mt-5 //bg-red-900">
+              <button className={`${isMyEntriesPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3`} onClick={() => displayPage("myEntries")}>My Entries</button>
               <button className={`${isMyRollsPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3`} onClick={() => displayPage("myRolls")}>My Rolls</button>
 
 
               {isMyEntriesPage && <MyEntries/>}
-              {isMyRollsPage && <MyRolls/>}
+              {isMyRollsPage && <MyRolls currentUser={currentUser}/>}
 
             </div>
 
