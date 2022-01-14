@@ -9,31 +9,44 @@ import { FormFieldLabel } from '../shared/FormFieldLabel'
 import { useForm } from "react-hook-form";
 import { useContext } from 'react';
 import HeaderContext from '../../contexts/HeaderContext';
+import { useRef } from 'react';
 
 export const RollView = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const [entryModalIsOpen, setEntryModalIsOpen] = useState(false);
+  const [editEntryModalIsOpen, setEditEntryModalIsOpen] = useState(false);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [roll, setRoll] = useState();
+  const [entries, setEntries] = useState();
+  const [specificID, setSpecificID] = useState(false);
 
   const router = useRouter();
   const roll_id = router.query.roll_id
+  const entry_id = router.query.entry_id
   const API = "http://localhost:3001"
-  const {
-    loggedInUser,
-  } = useContext(HeaderContext)
+  const { loggedInUser } = useContext(HeaderContext)
 
   useEffect(() => {
     if (!router.isReady) return
     axios({
       method: 'GET',
       url: `${API}/api/v1/rolls/${roll_id}`,
-    }).then(function (response) {
-      console.log(response.data)
-      setRoll(response.data);
-      setLoading(false);
-    });
+    })
+      .then(function (response) {
+        console.log(response.data)
+        setRoll(response.data);
+        if (!router.isReady) return
+        axios({
+          method: 'GET',
+          url: `${API}/api/v1/entries/roll/${roll_id}`,
+        })
+          .then(function (response) {
+            console.log(response.data)
+            setEntries(response.data);
+            setLoading(false);
+          });
+      });
   }, [router.isReady]);
 
   if (isLoading) {
@@ -96,7 +109,7 @@ export const RollView = (props) => {
       data: {
         title: data.title,
         image: data.image,
-        end_date: data.date,
+        date: data.date,
         country: data.country,
         city: data.city,
         category: data.category,
@@ -112,6 +125,53 @@ export const RollView = (props) => {
       console.log(error.response); // TEMP
     });
   }
+
+  const deleteEntry = (specific_id) => {
+    axios({
+      method: 'DELETE',
+      url: `${API}/api/v1/entries/${specific_id}`,
+    })
+      .then(function (response) {
+        console.log(response.data)
+        router.reload(window.location.pathname)
+      });
+  }
+
+  const editEntry = (specific_id) => {
+    setEditEntryModalIsOpen(true)
+    setSpecificID(specific_id)
+  }
+
+  const onEditEntrySubmit = (data) => {
+    axios({
+      method: 'PATCH',
+      url: `${API}/api/v1/entries/${specificID}`,
+      data: {
+        title: data.title,
+        image: data.image,
+        date: data.date,
+        country: data.country,
+        city: data.city,
+        category: data.category,
+        description: data.description,
+      }
+    }).then((response) => {
+      console.log(response.data)
+      var new_entry = response.data.entry
+      entry.title = new_entry.title
+      entry.image = new_entry.image
+      entry.date = new_entry.date
+      entry.country = new_entry.country
+      entry.city = new_entry.city
+      entry.category = new_entry.category
+      entry.description = new_entry.description
+
+      Router.reload(window.location.pathname)
+    }).catch((error) => {
+      console.log(error.response); // TEMP
+    });
+  }
+
 
   return (
     <>
@@ -237,7 +297,6 @@ export const RollView = (props) => {
                   <input
                     type="text"
                     {...register("title")}
-                    placeholder={"Shrine Visit"}
                     className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -266,7 +325,7 @@ export const RollView = (props) => {
                   </FormFieldLabel>
                   <input
                     type="date"
-                    {...register("end_date")}
+                    {...register("date")}
                     className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -308,6 +367,7 @@ export const RollView = (props) => {
                     Category
                   </FormFieldLabel>
                   <select
+                    {...register("category")}
                     className="
                     w-full text-base px-4 py-2 border
                     border-gray-300 rounded-lg
@@ -376,11 +436,188 @@ export const RollView = (props) => {
           <div className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">bio/user stats</div>
 
           <div className="h-full flex-grow w-9/12">
-            <button onClick={makeNewEntry} className="bg-atlas-400 font-bold text-white px-8 py-3 mt-3 ml-3">Create Entry</button>
+            <button onClick={makeNewEntry} className="ml-10 bg-atlas-400 font-bold text-white px-8 py-3 mt-3 ml-3">Create Entry</button>
+            <div>
+              {entries.map((entry) =>
+                <div key={entry.id} className="m-auto">
+                  <main className="flex w-full p-10 flex">
+                    <img src={`${entry.image}`} className="h-32 b rounded-2xl w-32 object-cover"></img>
+
+                    <div className="ml-3 flex-col text-white">
+                      <div className="pt-1">
+                        <div className="flex mb-2">
+                          <p>📌</p>
+                          <span className="italic font-bold">{entry.city}</span>
+                        </div>
+                        <h2>{entry.category}</h2>
+                        <h2 className="font-semibold mt-1">{entry.date}</h2>
+                        <p className="mt-2 text-justify">{entry.description}</p>
+                      </div>
+                    </div>
+
+                    <div className="w-1/3 flex-grow flex justify-end">
+                      <div onClick={() => editEntry(entry.id)} className="cursor-pointer h-full mr-4 text-xl text-blue-400 hover:text-blue-500">
+                        ✏️
+                      </div>
+
+                      <div onClick={() => deleteEntry(entry.id)} className="cursor-pointer h-full text-xl text-red-400 hover:text-red-500">
+                        🗑️
+                      </div>
+                    </div>
+                    {/* Edit Modal */}
+                    {editEntryModalIsOpen && <Modal setShowModal={setEditEntryModalIsOpen}>
+                      <div className="
+                    flex flex-col justify-center items-center
+                    w-full bg-atlas-700
+                    py-6 px-8
+                    " style={{ height: "calc(100vh - 3.5rem)" }}>
+                        <FormContainer>
+                          <form onSubmit={() => handleSubmit(onEditEntrySubmit)}>
+                            <h2 class="text-2xl font-semibold mb-4">
+                              Edit Entry
+                            </h2>
+                            <FormFieldLabel>
+                              Title
+                            </FormFieldLabel>
+                            <input
+                              type="text"
+                              {...register("title")}
+                              placeholder={entry.title}
+                              defaultValue={entry.title}
+                              className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                              required
+                            >
+                            </input>
+                            <FormFieldLabel>
+                              Image
+                            </FormFieldLabel>
+                            <input
+                              type="url"
+                              {...register("image")}
+                              placeholder={"Place a link to an image here."}
+                              defaultValue={entry.image}
+                              className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                            >
+                            </input>
+                            <FormFieldLabel>
+                              Date
+                            </FormFieldLabel>
+                            <input
+                              placeholder={entry.date}
+                              defaultValue={entry.date}
+                              type="date"
+                              {...register("date")}
+                              className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                              required
+                            >
+                            </input>
+                            {/* Country should be a hidden field na probably? */}
+                            <FormFieldLabel>
+                              City
+                            </FormFieldLabel>
+                            <input
+                              type="text"
+                              {...register("city")}
+                              placeholder={entry.city}
+                              defaultValue={entry.city}
+                              className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                              required
+                            >
+                            </input>
+                            <FormFieldLabel>
+                              Category
+                            </FormFieldLabel>
+                            <select
+                              placeholder={entry.category}
+                              defaultValue={entry.category}
+                              {...register("category")}
+                              className="
+                    w-full text-base px-4 py-2 border
+                    border-gray-300 rounded-lg
+                    focus:outline-none focus:border-atlas-400
+                    "
+                            >
+                              <option value="food">Food</option>
+                              <option value="attraction">Attraction</option>
+                              <option value="person">Person</option>
+                              <option value="fashion">Fashion</option>
+                              <option value="accommodation">Accommodation</option>
+                              <option value="transportation">Transportation</option>
+                              <option value="other">Other</option>
+                            </select>
+                            <FormFieldLabel>
+                              Description
+                            </FormFieldLabel>
+                            <textarea
+                              placeholder={entry.description}
+                              defaultValue={entry.description}
+                              name="description"
+                              {...register("description")}
+                              placeholder={"Tell us about what happened!"}
+                              className="
+                        w-full min-h-24 max-h-24 text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                              required
+                            >
+                            </textarea>
+                            <FormFieldLabel>
+                              Do you want this to be public?
+                            </FormFieldLabel>
+                            <input
+                              type="checkbox"
+                              {...register("public")}
+                              placeholder={"false"}
+                              className="
+                        ml-2 mt-2 text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                            >
+                            </input><br />
+                            <button
+                              type="submit"
+                              class="
+                        flex justify-center
+                        mt-8 p-3 w-full 
+                        bg-atlas-400 hover:bg-atlas-500 
+                        text-gray-100 font-semibold
+                        rounded-lg shadow-lg
+                        cursor-pointer transition ease-in duration-100
+                        "
+                            >
+                              Edit
+                            </button>
+                          </form>
+                        </FormContainer>
+                      </div>
+                    </Modal>}
+                  </main>
+                  <div className="border-b-2 m-auto border-white w-11/12"></div>
+                </div>
+
+              )}
+            </div>
           </div>
         </div>
-      </div >
-
+      </div>
     </>
   );
 }
