@@ -1,9 +1,8 @@
 import { Intro } from './rolls/wrap/Intro';
-import { Duration } from './rolls/wrap/Duration';
 import { Companions } from './rolls/wrap/Companions';
-import { Language } from './rolls/wrap/Language';
 import { Food } from './rolls/wrap/Food';
 import { Attractions } from './rolls/wrap/Attractions';
+import { Fashion } from './rolls/wrap/Fashion';
 import { Summary } from './rolls/wrap/Summary';
 import React from 'react'
 import { useEffect } from 'react'
@@ -107,7 +106,7 @@ export const WrappedRoll = (props) => {
                 <Food foods={rollFood} />
                 <Attractions attractions={rollAttraction} />
                 <Companions companions={rollPerson} />
-                <Language />
+                <Fashion fashions={rollFashion} />
                 <Summary />
             </div>
     </div>

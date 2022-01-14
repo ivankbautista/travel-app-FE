@@ -1,7 +1,7 @@
 import { RollBorder } from './RollBorder';
-export const Companions = (props) => {
-    const content = props.companions.map((companion) =>
-    <div key={companion.id} className="rounded-full w-48 h-48 -rotate-6 bg-cover text-center m-2" style={{ backgroundImage:`url("${companion.image}")` }}><span className="bg-atlas-300 p-2 rounded-sm w-10 h-5 text-white text-s">{companion.title}</span></div>
+export const Transportation = (props) => {
+    const content = props.transportations.map((transportation) =>
+    <div key={transportation.id} className="rounded-full w-48 h-48 -rotate-6 bg-cover text-center m-2" style={{ backgroundImage:`url("${transportation.image}")` }}><span className="bg-atlas-300 p-2 rounded-sm w-10 h-5 text-white text-s">{transportation.title}</span></div>
   );
   return (
     <div>
