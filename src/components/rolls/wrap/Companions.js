@@ -1,7 +1,7 @@
 import { RollBorder } from './RollBorder';
 export const Companions = (props) => {
     const array =  props.companions.filter(function(companion) {
-        return companion.category == "companion";
+        return companion.category == "person";
       });
     const content = array.map((companion) =>
     <div key={companion.id} className="rounded-full w-48 h-48 -rotate-6 bg-cover text-center m-2" style={{ backgroundImage:`url("${companion.image}")` }}><span className="bg-atlas-300 p-2 rounded-sm w-10 h-5 text-white text-s">{companion.title}</span></div>
