@@ -28,6 +28,17 @@ export const Summary = (props) => {
       const fashion_arr =  props.components.filter(function(component) {
         return component.category == "fashion";
       });
+
+      function shuffleArray(array) {
+        let i = array.length - 1;
+        for (; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+        return array;
+      }      
       
   return (
     <div>
@@ -44,7 +55,7 @@ export const Summary = (props) => {
                 </div>
                 <div className="rounded-md bg-atlas-100 flex flex-col font-extrabold text-6xl w-[50vw] text-left m-2 h-[73vh]">
                     <div className="flex flex-wrap items-center justify-center flex-row h-[12vh] w-[50vw] overflow-hidden">
-                        {content}
+                        {shuffleArray(content)}
                     </div>
                     <div className="font-extrabold text-4xl bg-clip-text text-transparent bg-gradient-to-br from-atlas-600 to-atlas-300 text-left pl-5 mt-5 mb-5 w-[50vw] h-[40vh]">
                         {duration} days away<br />
@@ -58,7 +69,7 @@ export const Summary = (props) => {
                         ...where to next?
                     </div>
                     <div className="flex flex-wrap items-center justify-center flex-row-reverse h-[12vh] w-[50vw] overflow-hidden">
-                        {content_rev}
+                        {shuffleArray(content_rev)}
                     </div>
                 </div>
             </div>
