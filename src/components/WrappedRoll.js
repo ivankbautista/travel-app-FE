@@ -106,7 +106,7 @@ export const WrappedRoll = (props) => {
                 <Intro title={roll.title} image={roll.image} start_date={roll.start_date} end_date={roll.start_date} />
                 <Food foods={rollFood} />
                 <Attractions attractions={rollAttraction} />
-                <Companions />
+                <Companions companions={rollPerson} />
                 <Language />
                 <Summary />
             </div>
