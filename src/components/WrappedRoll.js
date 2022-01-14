@@ -42,10 +42,8 @@ export const WrappedRoll = (props) => {
           .then(function (response) {
             console.log(response.data);
             setRoll(response.data);
-            console.log("this first")  
           })
           .then(()=> {
-            console.log("this second")
             setLoading(false);
           });
           });
@@ -64,7 +62,7 @@ export const WrappedRoll = (props) => {
                 <Attractions attractions={rollCategory} />
                 <Fashion fashions={rollCategory} />
                 <Accommodation accommodations={rollCategory} />
-                <Summary />
+                <Summary headers={roll} components={rollCategory}/>
             </div>
     </div>
   );
