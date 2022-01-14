@@ -34,7 +34,7 @@ function MyEntries() {
 
   return (
     <>
-      <div className="h-[30vh] bg-atlas-600 mt-4 overflow-scroll p-4">
+      <div className="h-[30vh] bg-atlas-600 mt-4 overflow-y-scroll p-4">
         {currentEntry.map((entry) =>
           <Entry key={entry.id} entry={entry} />
         )}
