@@ -1,23 +1,42 @@
 import HeaderContext from "../contexts/HeaderContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from 'react'
 
-const ContextWrapper = ({ children  }) => {
+const ContextWrapper = ({ children }) => {
     // define states
-    // e.g. const [menuItems] = useState(navigation)
-    // e.g. const [color, toggleColor] = useState(true)
+    // states using localStorage
+    // useEffect to ensure page loads before localStorage is called
+    if(typeof window !== "undefined") {
+        const [loggedInUser, setLoggedInUser] = useState(() => {
+            const savedValue = JSON.parse(localStorage.getItem("loggedInUser"));
+            const initialValue = null;
+            return savedValue || initialValue;
+        });
 
-    return (
+        const [loggedIn, setLoggedIn] = useState(() => {
+            const savedValue = JSON.parse(localStorage.getItem("loggedIn"));
+            const initialValue = false;
+            return savedValue || initialValue;
+        });
+    }
+
+    // keep localStorage updated
+    useEffect(() => {
+        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+    }, [JSON.stringify(loggedInUser)]);
+
+    useEffect(() => {
+        localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
+    }, [JSON.stringify(loggedIn)]);
+
+    return (<>
         <HeaderContext.Provider value={{
-            // include states here
-            // EXAMPLE
-            // menuItems,
-            // color,
-            // toggleColor,
+            loggedIn, setLoggedIn,
+            loggedInUser, setLoggedInUser,
         }}>
             {children}
         </HeaderContext.Provider>
-    )
+    </>)
 }
 
 export default ContextWrapper

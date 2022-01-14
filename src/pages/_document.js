@@ -1,10 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
-  }
 
   render() {
     return (
@@ -13,7 +9,7 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600" rel="stylesheet" />
         </Head>
-        <body>
+        <body class="bg-atlas-700">
           <Main />
           <NextScript />
         </body>
