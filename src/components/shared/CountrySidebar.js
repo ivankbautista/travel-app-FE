@@ -67,7 +67,7 @@ const CountrySideBar = ({ color, country }) => {
                                             </a>
                                         </div>
                                         <br />
-                                        <p className="text-center">Find out more from other users using the Explore tab!</p>
+                                        <p className="text-center">Find out more from other users</p>
                                     </div>
                                 </div>
 
@@ -86,7 +86,7 @@ const CountrySideBar = ({ color, country }) => {
                                             </a>
                                         </div>
                                         <br />
-                                        <p className="text-center">Find out more from other users using the Explore tab!</p>
+                                        <p className="text-center">Find out more from other users!</p>
                                     </div>
                                 </div>
                             </div>

@@ -31,7 +31,7 @@ function MyRolls({ currentUser }) {
 
   return (
     <>
-      <div className="h-screen mt-4 pr-3">
+      <div className="h-[30vh] bg-atlas-200 mt-4 overflow-scroll p-4">
         {rolls.map((roll) => 
           <Roll key={roll.id} roll={roll} />
         )}

@@ -16,26 +16,24 @@ const CountryPage = ({ country }) => {
     }
 
     return (
-        <div className="h-screen">
+        <div style={{ height: 'calc(100vh - 3.5rem)' }}>
             {/* Country Header */}
             <div style={{ width: '100%', height: '20%', position: 'relative' }} className="w-full relative">
                 <div className="absolute bg-gray-600 w-full h-full opacity-60 top-0 left-0 z-10"></div>
                 <div className="absolute z-20 flex flex-col items-center w-full justify-center h-full">
-                    <div className="text-white font-bold text-6xl">{country.name}</div>
+                    <div className="text-white font-bold text-7xl font-display">{country.name}</div>
                 </div>
                 <Image src={country.imageUrl} layout='fill' objectFit='cover' />
             </div>
 
             {/* Sidebar, Explore & Entry Page */}
-            <div className="flex items-center h-full">
+            <div className="flex items-center h-full" style={{ height: 'calc(100vh - 3.5rem - 20%)' }}>
                 <CountrySideBar />
 
-                <div className="h-full flex-grow w-9/12">
-                    <button className={`${isMyExploreList ? "bg-atlas-400 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3 ml-3`} onClick={() => displayPage("exploreList")}>Explore</button>
-                    <button className={`${isMyCountryEntryList ? "bg-atlas-600 font-bold text-white" : "bg-gray-300 font-bold text-black"} px-8 py-3 mt-3`} onClick={() => displayPage("myCountryEntryList")}>My Entries</button>
+                <div className="h-full flex-grow w-9/12 overflow-y-auto" style={{ height: 'calc(100vh - 3.5rem - 20%)' }}>
 
                     {isMyExploreList && <ExploreList />}
-                    {isMyCountryEntryList && <MyCountryEntryList />}
+
                 </div>
             </div>
         </div>
