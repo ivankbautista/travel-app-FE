@@ -1,6 +1,9 @@
 import { RollBorder } from './RollBorder';
 export const Food = (props) => {
-    const content = props.foods.map((food) =>
+    const array =  props.foods.filter(function(food) {
+        return food.category == "food";
+      });
+    const content = array.map((food) =>
     <div key={food.id} className="rounded-md w-40 h-40 m-1 -rotate-2 bg-cover" style={{ backgroundImage:`url("${food.image}")` }}></div>
   );
   return (

@@ -1,21 +1,22 @@
 import { RollBorder } from './RollBorder';
-export const Accomodation = (props) => {
-    const content = props.accommodations.map((accommodation) =>
-    <div key={accommodation.id} className="rounded-full w-48 h-48 -rotate-6 bg-cover text-center m-2" style={{ backgroundImage:`url("${accommodation.image}")` }}><span className="bg-atlas-300 p-2 rounded-sm w-10 h-5 text-white text-s">{accommodation.title}</span></div>
+export const Accommodation = (props) => {
+    const array =  props.accommodations.filter(function(accommodation) {
+        return accommodation.category == "accommodation";
+      });
+    const content = array.map((accommodation) =>
+    <div key={accommodation.id} className="rounded-md w-40 h-40 m-1 -rotate-2 bg-cover" style={{ backgroundImage:`url("${accommodation.image}")` }}></div>
   );
   return (
     <div>
-        <div className="h-[92vh] bg-gradient-to-b from-[#26083d] to-[#3d135e] flex flex-wrap snap-center">
+        <div className="h-[92vh] bg-gradient-to-b from-[#51157d] to-[#381254] flex flex-wrap snap-center">
             <RollBorder />
-            <div className="grow flex items-center justify-center w-3/4">
-                    <div className="flex flex-col text-xs">
-                        <div className="font-bold text-6xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 text-center">
-                            You travelled with...
-                        </div>
-                        <div className="flex flex-wrap items-center justify-center flex-row h-56 w-[75vw] overflow-hidden p-5">
-                            {content}
-                        </div>
-                    </div>
+            <div className="grow flex items-center justify-center">
+                <div className="flex flex-wrap w-[50vw] h-[70vh] items-center justify-center overflow-hidden">
+                {content}
+                </div>
+                <div className="font-extrabold text-6xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 w-[30vw] text-center">
+                    Did you like the accommodation?
+                </div>
             </div>
             <RollBorder />
         </div>

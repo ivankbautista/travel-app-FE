@@ -1,6 +1,9 @@
 import { RollBorder } from './RollBorder';
 export const Attractions = (props) => {
-    const content = props.attractions.map((attraction) =>
+    const array =  props.attractions.filter(function(attraction) {
+        return attraction.category == "attraction";
+      });
+    const content = array.map((attraction) =>
     <div key={attraction.id} className="rounded-md flex-grow w-60 h-40 p-2 pt-3 text-right m-0.5 bg-cover" style={{ backgroundImage:`url("${attraction.image}")` }}><span className="bg-atlas-300 p-2 rounded-sm">{attraction.title}</span></div>
   );
   return (
