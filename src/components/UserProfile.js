@@ -42,9 +42,13 @@ export const UserProfile = () => {
 
   return (
     <>
-    {loggedIn && 
-          <>
-          <div style={{backgroundImage: `url("https://i.pinimg.com/736x/25/87/ec/2587ec34faa3b4bff7dbc7a2aa1692b1.jpg")` }} className="h-72 flex flex-col justify-center items-center">
+    {loggedIn &&
+      <>
+          <div style={{backgroundImage: `url(${
+              currentUser.profile_picture === null ? 
+              "https://i.pinimg.com/736x/25/87/ec/2587ec34faa3b4bff7dbc7a2aa1692b1.jpg" : 
+              currentUser.profile_picture
+            })` }} className="h-72 flex flex-col justify-center items-center bg-cover">
             {/* <Image src={imageUrl} height={'120'} width={'120'} className='bg-red-400 rounded-full mt-3'/> */}
             {/* <img src={imageUrl} alt="Profile Picture" height={120} width={100} className="rounded-full mt-3" /> */}
             {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
