@@ -75,12 +75,12 @@ export const edit = () => {
           {/* temp, before making it uploaded */}
           <div className="space-y-2 mb-4">
             <FormFieldLabel>
-              Profile Picture
+              Profile Banner
             </FormFieldLabel>
             <input
               type="text"
               {...register("profile_picture")}
-              defaultValue={ loggedInUser.profile_picture }
+              defaultValue={ loggedInUser?.profile_picture }
               placeholder={ "imgur.com/myimage" }
               className="
               w-full text-base px-4 py-2 border
@@ -96,7 +96,7 @@ export const edit = () => {
             </FormFieldLabel>
             <textarea
               {...register("bio")}
-              defaultValue={ loggedInUser.bio }
+              defaultValue={ loggedInUser?.bio }
               placeholder={ "I love to travel! " }
               className="
               w-full text-base px-4 py-2 border
@@ -113,7 +113,7 @@ export const edit = () => {
             <input
               type="email"
               {...register("email")}
-              value={ loggedInUser.email }
+              value={ loggedInUser?.email }
               placeholder={ "johndoe@gmail.com" }
               className="
               w-full text-base px-4 py-2 border
@@ -131,7 +131,7 @@ export const edit = () => {
             <input
               type="text"
               {...register("username")}
-              value={ loggedInUser.username }
+              value={ loggedInUser?.username }
               placeholder={ "johndoe" }
               className="
               w-full text-base px-4 py-2 border
@@ -149,7 +149,7 @@ export const edit = () => {
             <input
               type="text"
               {...register("first_name")}
-              defaultValue={ loggedInUser.first_name }
+              defaultValue={ loggedInUser?.first_name }
               placeholder={ "Jonathan" }
               className="
               w-full text-base px-4 py-2 border
@@ -166,7 +166,7 @@ export const edit = () => {
             <input
               type="text"
               {...register("last_name")}
-              defaultValue={ loggedInUser.last_name }
+              defaultValue={ loggedInUser?.last_name }
               placeholder={ "Donatello" }
               className="
               w-full text-base px-4 py-2 border
