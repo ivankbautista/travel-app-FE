@@ -15,7 +15,7 @@ export const Fashion = (props) => {
                     What was your favorite #OOTD?
                 </div>
                 <div className="flex flex-wrap w-[50vw] h-[85vh] items-center justify-center overflow-hidden">
-                {content} {content} {content} {content} {content} {content} {content}
+                {content}
                 </div>
             </div>
             <RollBorder />
