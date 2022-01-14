@@ -105,9 +105,9 @@ export const WrappedRoll = (props) => {
             <div className="h-full w-full scroll-smooth overflow-y-scroll snap-mandatory snap-y">
                 <Intro title={roll.title} image={roll.image} start_date={roll.start_date} end_date={roll.start_date} />
                 <Food foods={rollFood} />
+                <Attractions attractions={rollAttraction} />
                 <Companions />
                 <Language />
-                <Attractions />
                 <Summary />
             </div>
     </div>
