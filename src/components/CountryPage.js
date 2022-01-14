@@ -21,7 +21,7 @@ const CountryPage = ({ country }) => {
             <div style={{ width: '100%', height: '20%', position: 'relative' }} className="w-full relative">
                 <div className="absolute bg-gray-600 w-full h-full opacity-60 top-0 left-0 z-10"></div>
                 <div className="absolute z-20 flex flex-col items-center w-full justify-center h-full">
-                    <div className="text-white font-bold text-6xl">{country.name}</div>
+                    <div className="text-white font-bold text-7xl font-display">{country.name}</div>
                 </div>
                 <Image src={country.imageUrl} layout='fill' objectFit='cover' />
             </div>
