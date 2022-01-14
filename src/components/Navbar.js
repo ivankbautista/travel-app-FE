@@ -33,23 +33,13 @@ const Navbar = () => {
       </div>
       {/* nav-items-left */}
       <div className='flex justify-between items-center h-full'>
-        <Link href='#'>
-          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
-            Explore
-          </a>
-        </Link>
-        <Link href='#'>
-          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
-            My Rolls
-          </a>
-        </Link>
-        <Link href='/rolls/new'>
-          <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
-            New Roll
-          </a>
-        </Link>
         { loggedInUser ?
           <>
+            <Link href='/rolls/new'>
+              <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
+                New Roll
+              </a>
+            </Link>
             <Link href={"/users/"+loggedInUser.username}>
               <a className='flex justify-center items-center h-full px-6 text-atlas-100 hover:bg-atlas-500'>
                 My Profile
@@ -76,10 +66,6 @@ const Navbar = () => {
           </>
         }
       </div>
-      {/* TEMP
-      <div>
-        { loggedInUser && loggedInUser.email}
-      </div> */}
     </div>
   )
 }
