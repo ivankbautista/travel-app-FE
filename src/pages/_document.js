@@ -11,7 +11,7 @@ class MyDocument extends Document {
           <title>Atlas</title>
           <meta name='viewport' content='initial-scale=1.0, width=device-width' />
         </Head>
-        <body class="bg-atlas-700">
+        <body className="bg-atlas-700">
           <Main />
           <NextScript />
         </body>
