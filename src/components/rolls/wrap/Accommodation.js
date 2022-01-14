@@ -13,7 +13,7 @@ export const Accommodation = (props) => {
                 <div className="grow flex items-center justify-center w-3/4">
                     <div className="flex flex-col text-xs">
                         <div className="font-extrabold text-5xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 text-center mt-5 mb-5 w-[75vw]">
-                            Enjoy your stay?
+                            How was your stay?
                         </div>
                         <div className="flex flex-wrap items-center justify-center flex-row h-[18rem] w-[75vw] overflow-hidden">
                             {content}
