@@ -1,10 +1,10 @@
-import { Intro } from './rolls/Intro';
-import { Duration } from './rolls/Duration';
-import { Companions } from './rolls/Companions';
-import { Language } from './rolls/Language';
-import { Food } from './rolls/Food';
-import { Attractions } from './rolls/Attractions';
-import { Summary } from './rolls/Summary';
+import { Intro } from './rolls/wrap/Intro';
+import { Duration } from './rolls/wrap/Duration';
+import { Companions } from './rolls/wrap/Companions';
+import { Language } from './rolls/wrap/Language';
+import { Food } from './rolls/wrap/Food';
+import { Attractions } from './rolls/wrap/Attractions';
+import { Summary } from './rolls/wrap/Summary';
 
 export const WrappedRoll = () => {
     return (
