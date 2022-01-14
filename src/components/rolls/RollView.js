@@ -179,7 +179,6 @@ export const RollView = (props) => {
   return (
     <>
       {/* Profile header  */}
-      <div className="h-screen">
         <div style={{ backgroundImage: `url(${roll.image})` }} className="h-72 bg-cover flex flex-col justify-center items-center">
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
           <h1 className="text-white text-7xl font-display">{roll.title}</h1>
@@ -187,9 +186,9 @@ export const RollView = (props) => {
           <div className="flex justify-between w-56 h-1/4">
             {loggedInUser.id === roll.user_id &&
               <>
-                <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
-                <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
-                <button onClick={rollUp}><a className="p-3 text-white bg-blue-500 rounded">Roll It</a></button>
+                <button onClick={editRoll}><a className="p-3 text-white bg-atlas-400 hover:bg-atlas-500 font-display rounded">Edit</a></button>
+                <button onClick={deleteRoll}><a className="p-3 text-white bg-atlas-400 hover:bg-atlas-500 font-display rounded">Delete</a></button>
+                <button onClick={rollUp}><a className="p-3 text-white bg-atlas-400 hover:bg-atlas-500 font-display rounded">Roll It</a></button>
               </>
             }
           </div>
@@ -434,15 +433,10 @@ export const RollView = (props) => {
             </div>
           </Modal>
         }
-
-
-        {/* Sidebar & Main content */}
-        <div className="flex items-center h-full">
-          <div className="h-screen bg-gray-600 w-3/12 text-white mt-3 flex flex-col justify-center items-center justify-self-start self-start">bio/user stats</div>
-
+        <div style={{ height: 'calc(100vh - 70rem)' }} className="flex items-center bg-white">
           <div className="h-full flex-grow w-9/12">
             <button onClick={makeNewEntry} className="ml-10 bg-atlas-400 font-bold text-white px-8 py-3 mt-3 ml-3">Create Entry</button>
-            <div>
+            <div className="h-[30vh] bg-atlas-600 mt-4 overflow-scroll p-4 m-5">
               {entries.map((entry) =>
                 <div key={entry.id} className="m-auto">
                   <main className="flex w-full p-10 flex">
@@ -633,12 +627,10 @@ export const RollView = (props) => {
                   </main>
                   <div className="border-b-2 m-auto border-white w-11/12"></div>
                 </div>
-
               )}
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }
