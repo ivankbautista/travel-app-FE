@@ -81,6 +81,10 @@ export const RollView = (props) => {
     setEntryModalIsOpen(true)
   }
 
+  const rollUp = () => {
+    router.push(`/rolls/${roll_id}/wrap`)
+  }
+
   const EntryCreate = (data) => {
     axios({
       method: 'POST',
@@ -117,6 +121,7 @@ export const RollView = (props) => {
           <div className="flex justify-between w-56 h-1/4">
             <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
             <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
+            <button onClick={rollUp}><a className="p-3 text-white bg-blue-500 rounded">Roll It</a></button>
           </div>
         </div>
         {editModalIsOpen && <Modal setShowModal={setEditModalIsOpen}>
