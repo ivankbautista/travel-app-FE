@@ -124,8 +124,8 @@ export const RollView = (props) => {
       <div className="h-screen">
         <div style={{backgroundImage: `url(${roll.image})` }} className="h-72 bg-cover flex flex-col justify-center items-center">
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
-          <h1 className="text-white text-7xl">{roll.title}</h1>
-          <h1 className="text-white text-2xl">{roll.start_date} to {roll.end_date}</h1>
+          <h1 className="text-white text-7xl font-display">{roll.title}</h1>
+          <h1 className="text-white text-2xl font-display">{roll.start_date} to {roll.end_date}</h1>
           <div className="flex justify-between w-56 h-1/4">
           { loggedInUser.id === roll.user_id &&
             <>
