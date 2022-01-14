@@ -7,9 +7,7 @@ function MyRolls({ currentUser }) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(true);
   const [rolls, setRolls] = useState()
-  const roll_id = router.query
-  // console.log(roll_id)
-  // console.log(RollPage.query.roll_id)        
+  const roll_id = router.query   
 
   const API = "http://localhost:3001"
 
