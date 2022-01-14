@@ -92,7 +92,6 @@ export const RollView = (props) => {
       roll.start_date = new_roll.start_date
       roll.end_date = new_roll.end_date
 
-        ;
     }).catch((error) => {
       console.log(error.response); // TEMP
     });
@@ -143,6 +142,7 @@ export const RollView = (props) => {
   }
 
   const onEditEntrySubmit = (data) => {
+    console.log(specificID)
     axios({
       method: 'PATCH',
       url: `${API}/api/v1/entries/${specificID}`,
@@ -157,19 +157,13 @@ export const RollView = (props) => {
       }
     }).then((response) => {
       console.log(response.data)
-      var new_entry = response.data.entry
-      entry.title = new_entry.title
-      entry.image = new_entry.image
-      entry.date = new_entry.date
-      entry.country = new_entry.country
-      entry.city = new_entry.city
-      entry.category = new_entry.category
-      entry.description = new_entry.description
 
-      Router.reload(window.location.pathname)
-    }).catch((error) => {
-      console.log(error.response); // TEMP
-    });
+      setEditEntryModalIsOpen(false)
+      router.reload(window.location.pathname)
+    })
+    // .catch((error) => {
+    //   console.log(error.response); // TEMP
+    // });
   }
 
 
@@ -472,9 +466,9 @@ export const RollView = (props) => {
                     py-6 px-8
                     " style={{ height: "calc(100vh - 3.5rem)" }}>
                         <FormContainer>
-                          <form onSubmit={() => handleSubmit(onEditEntrySubmit)}>
+                          <form onSubmit={handleSubmit(onEditEntrySubmit)}>
                             <h2 class="text-2xl font-semibold mb-4">
-                              Edit Entry
+                              Edit Entry!
                             </h2>
                             <FormFieldLabel>
                               Title
