@@ -88,10 +88,11 @@ export const RollView = (props) => {
       data: {
         title: data.title,
         image: data.image,
-        end_date: data.date,
+        date: data.date,
         country: data.country,
         city: data.city,
         category: data.category,
+        public: data.public,
         description: data.description,
         user_id: loggedInUser.id, // IMPORTANT
         roll_id: roll_id // IMPORTANT
@@ -253,7 +254,7 @@ export const RollView = (props) => {
                 </FormFieldLabel>
                 <input
                   type="date"
-                  {...register("end_date")}
+                  {...register("date")}
                   className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -300,6 +301,7 @@ export const RollView = (props) => {
                     border-gray-300 rounded-lg
                     focus:outline-none focus:border-atlas-400
                     "
+                    {...register("category")}
                 >
                   <option value="food">Food</option>
                   <option value="attraction">Attraction</option>
@@ -330,7 +332,7 @@ export const RollView = (props) => {
                 <input
                   type="checkbox"
                   {...register("public")}
-                  placeholder={"false"}
+                  placeholder={"true"}
                   className="
                         ml-2 mt-2 text-base px-4 py-2 border
                         border-gray-300 rounded-lg

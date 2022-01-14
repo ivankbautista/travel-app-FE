@@ -54,7 +54,7 @@ export const EntryForm = (props) => {
                         </FormFieldLabel>
                         <input
                             type="date"
-                            {...register("end_date")}
+                            {...register("date")}
                             className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -83,6 +83,7 @@ export const EntryForm = (props) => {
                             Category
                         </FormFieldLabel>
                         <select
+                            {...register("category")}
                             className="
                     w-full text-base px-4 py-2 border
                     border-gray-300 rounded-lg
@@ -118,7 +119,7 @@ export const EntryForm = (props) => {
                         <input
                             type="checkbox"
                             {...register("public")}
-                            placeholder={"false"}
+                            placeholder={"true"}
                             className="
                         ml-2 mt-2 text-base px-4 py-2 border
                         border-gray-300 rounded-lg
