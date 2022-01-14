@@ -20,7 +20,6 @@ export const UserProfile = () => {
   const [isLoading, setLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState();
   const username = router.query.username
-  console.log(username)
 
   const API = "http://localhost:3001"
 
@@ -31,7 +30,7 @@ export const UserProfile = () => {
         url: `${API}/users/${username}`,
       })
         .then(function (response) {
-          console.log(response.data)
+          // console.log(response.data)
           setCurrentUser(response.data)
           setLoading(false)
         })
@@ -70,7 +69,7 @@ export const UserProfile = () => {
                 <button className={`${isMyRollsPage ? "bg-purple-400" : "bg-gray-300"} px-8 py-3 mt-3`} onClick={() => displayPage("myRolls")}>My Rolls</button>
               </div>
 
-              {isMyEntriesPage && <MyEntries/>}
+              {isMyEntriesPage && <MyEntries currentUser={currentUser}/>}
               {isMyRollsPage && <MyRolls currentUser={currentUser}/>}
 
             </div>
