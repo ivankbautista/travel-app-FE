@@ -16,7 +16,7 @@ export const RollView = (props) => {
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
   const [entryModalIsOpen, setEntryModalIsOpen] = useState(false);
   const [editEntryModalIsOpen, setEditEntryModalIsOpen] = useState(false);
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
   const [roll, setRoll] = useState();
   const [entries, setEntries] = useState();
   const [specificID, setSpecificID] = useState(false);
@@ -26,6 +26,10 @@ export const RollView = (props) => {
   const entry_id = router.query.entry_id
   const API = "http://localhost:3001"
   const { loggedInUser } = useContext(HeaderContext)
+
+  useEffect(() => {
+    reset()
+  }, [editEntryModalIsOpen])
 
   useEffect(() => {
     if (!router.isReady) return
@@ -40,12 +44,11 @@ export const RollView = (props) => {
         axios({
           method: 'GET',
           url: `${API}/api/v1/entries/roll/${roll_id}`,
+        }).then(function (response) {
+          console.log(response.data)
+          setEntries(response.data);
+          setLoading(false);
         })
-          .then(function (response) {
-            console.log(response.data)
-            setEntries(response.data);
-            setLoading(false);
-          });
       });
   }, [router.isReady]);
 
@@ -147,7 +150,7 @@ export const RollView = (props) => {
   }
 
   const onEditEntrySubmit = (data) => {
-    console.log(specificID)
+    // console.log(specificID)
     axios({
       method: 'PATCH',
       url: `${API}/api/v1/entries/${specificID}`,
@@ -483,8 +486,8 @@ export const RollView = (props) => {
                             <input
                               type="text"
                               {...register("title")}
-                              placeholder={entry.title}
-                              defaultValue={entry.title}
+                              placeholder={"My Adventure"}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].title}
                               className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -500,7 +503,7 @@ export const RollView = (props) => {
                               type="url"
                               {...register("image")}
                               placeholder={"Place a link to an image here."}
-                              defaultValue={entry.image}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].image}
                               className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -512,8 +515,8 @@ export const RollView = (props) => {
                               Date
                             </FormFieldLabel>
                             <input
-                              placeholder={entry.date}
-                              defaultValue={entry.date}
+                              placeholder={"Date here"}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].date}
                               type="date"
                               {...register("date")}
                               className="
@@ -531,8 +534,8 @@ export const RollView = (props) => {
                             <input
                               type="text"
                               {...register("city")}
-                              placeholder={entry.city}
-                              defaultValue={entry.city}
+                              placeholder={"City here"}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].city}
                               className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
@@ -545,8 +548,8 @@ export const RollView = (props) => {
                               Category
                             </FormFieldLabel>
                             <select
-                              placeholder={entry.category}
-                              defaultValue={entry.category}
+                              placeholder={"Category here"}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].category}
                               {...register("category")}
                               className="
                     w-full text-base px-4 py-2 border
@@ -566,8 +569,7 @@ export const RollView = (props) => {
                               Description
                             </FormFieldLabel>
                             <textarea
-                              placeholder={entry.description}
-                              defaultValue={entry.description}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].description}
                               name="description"
                               {...register("description")}
                               placeholder={"Tell us about what happened!"}
