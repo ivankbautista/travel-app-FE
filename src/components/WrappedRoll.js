@@ -65,7 +65,6 @@ export const WrappedRoll = (props) => {
                 <Attractions attractions={rollCategory} />
                 <Fashion fashions={rollCategory} />
                 <Accommodation accommodations={rollCategory} />
-                <Transportation transportations={rollCategory} />
                 <Summary />
             </div>
     </div>
