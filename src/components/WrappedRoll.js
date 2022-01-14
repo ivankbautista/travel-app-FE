@@ -36,6 +36,7 @@ export const WrappedRoll = (props) => {
       })
         .then(function (response) {
           setRollFood(response.data);
+          console.log(response.data)
         });
     axios({
         method: 'GET',
@@ -83,6 +84,7 @@ export const WrappedRoll = (props) => {
 
   useEffect(() => {
     if (!router.isReady) return
+    ApiCall();
     axios({
       method: 'GET',
       url: `${API}/api/v1/rolls/${roll_id}`,
@@ -102,9 +104,9 @@ export const WrappedRoll = (props) => {
     <div className="h-[92vh] bg-black flex flex-wrap overflow-hidden text-white">
             <div className="h-full w-full scroll-smooth overflow-y-scroll snap-mandatory snap-y">
                 <Intro title={roll.title} image={roll.image} start_date={roll.start_date} end_date={roll.start_date} />
+                <Food foods={rollFood} />
                 <Companions />
                 <Language />
-                <Food />
                 <Attractions />
                 <Summary />
             </div>
