@@ -51,7 +51,7 @@ export const sign_up = () => {
   };
 
   return (<>
-    <div class="
+    <div className="
     flex flex-col justify-start items-center
     w-full bg-atlas-700
     py-6 px-8
@@ -59,7 +59,7 @@ export const sign_up = () => {
     " style={{height: "calc(100vh - 3.5rem)"}}>
       <FormContainer>
         <form onSubmit = { handleSubmit(onSubmit) }>
-          <h2 class="text-2xl font-semibold mb-4">
+          <h2 className="text-2xl font-semibold mb-4">
             Sign Up
           </h2>
           {errorList.length > 0 &&
@@ -165,7 +165,7 @@ export const sign_up = () => {
           </div>
           <button
             type="submit"
-            class="
+            className="
             flex justify-center
             mt-8 p-3 w-full 
             bg-atlas-400 hover:bg-atlas-500 
@@ -176,7 +176,7 @@ export const sign_up = () => {
           >
             Sign Up
           </button>
-          <div class="flex flex-col justify-center items-center mt-3">
+          <div className="flex flex-col justify-center items-center mt-3">
             <a href="/users/sign_in"className="
             text-atlas-400 hover:text-atlas-500
             text-sm font-semibold
