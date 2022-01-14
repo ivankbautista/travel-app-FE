@@ -2,7 +2,6 @@ import { Intro } from './rolls/wrap/Intro';
 import { Companions } from './rolls/wrap/Companions';
 import { Food } from './rolls/wrap/Food';
 import { Accommodation } from './rolls/wrap/Accommodation';
-import { Transportation } from './rolls/wrap/Transportation';
 import { Attractions } from './rolls/wrap/Attractions';
 import { Fashion } from './rolls/wrap/Fashion';
 import { Summary } from './rolls/wrap/Summary';
