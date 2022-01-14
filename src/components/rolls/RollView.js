@@ -162,6 +162,7 @@ export const RollView = (props) => {
         city: data.city,
         category: data.category,
         description: data.description,
+        public: data.public,
       }
     }).then((response) => {
       console.log(response.data)
@@ -468,6 +469,7 @@ export const RollView = (props) => {
                         🗑️
                       </div>
                     </div>
+
                     {/* Edit Modal */}
                     {editEntryModalIsOpen && <Modal setShowModal={setEditEntryModalIsOpen}>
                       <div className="
@@ -519,6 +521,22 @@ export const RollView = (props) => {
                               defaultValue={entries.filter((entry) => entry.id === specificID)[0].date}
                               type="date"
                               {...register("date")}
+                              className="
+                        w-full text-base px-4 py-2 border
+                        border-gray-300 rounded-lg
+                        focus:outline-none focus:border-atlas-400
+                        "
+                              required
+                            >
+                            </input>
+                            <FormFieldLabel>
+                              Country
+                            </FormFieldLabel>
+                            <input
+                              type="text"
+                              {...register("country")}
+                              placeholder={"Japan"}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].country}
                               className="
                         w-full text-base px-4 py-2 border
                         border-gray-300 rounded-lg
