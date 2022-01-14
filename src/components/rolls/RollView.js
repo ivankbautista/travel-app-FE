@@ -102,6 +102,10 @@ export const RollView = (props) => {
     setEntryModalIsOpen(true)
   }
 
+  const rollUp = () => {
+    router.push(`/rolls/${roll_id}/wrap`)
+  }
+
   const EntryCreate = (data) => {
     axios({
       method: 'POST',
@@ -113,6 +117,7 @@ export const RollView = (props) => {
         country: data.country,
         city: data.city,
         category: data.category,
+        public: data.public,
         description: data.description,
         user_id: loggedInUser.id, // IMPORTANT
         roll_id: roll_id // IMPORTANT
@@ -177,19 +182,20 @@ export const RollView = (props) => {
     <>
       {/* Profile header  */}
       <div className="h-screen">
-        <div style={{ backgroundImage: `url(${roll.image})` }} className="h-72 flex flex-col justify-center items-center">
+        <div style={{ backgroundImage: `url(${roll.image})` }} className="h-72 bg-cover flex flex-col justify-center items-center">
           {/* <p className="rounded-full w-32 h-32 bg-red-400 mt-3"></p> */}
-          <h1 className="text-white text-7xl">{roll.title}</h1>
-          <h1 className="text-white text-2xl">{roll.start_date} to {roll.end_date}</h1>
+          <h1 className="text-white text-7xl font-display">{roll.title}</h1>
+          <h1 className="text-white text-2xl font-display">{roll.start_date} to {roll.end_date}</h1>
           <div className="flex justify-between w-56 h-1/4">
-            {loggedInUser?.id === roll?.user_id &&
+            {loggedInUser.id === roll.user_id &&
               <>
                 <button onClick={editRoll}><a className="p-3 text-white bg-blue-500 rounded">Edit</a></button>
                 <button onClick={deleteRoll}><a className="p-3 text-white bg-blue-500 rounded">Delete</a></button>
+                <button onClick={rollUp}><a className="p-3 text-white bg-blue-500 rounded">Roll It</a></button>
               </>
             }
-          </div >
-        </div >
+          </div>
+        </div>
         {editModalIsOpen && <Modal setShowModal={setEditModalIsOpen}>
           <div className="
         flex flex-col justify-center items-center" style={{ height: "calc(100vh - 3.5rem)" }}>
@@ -373,6 +379,7 @@ export const RollView = (props) => {
                     border-gray-300 rounded-lg
                     focus:outline-none focus:border-atlas-400
                     "
+                    {...register("category")}
                   >
                     <option value="food">Food</option>
                     <option value="attraction">Attraction</option>
@@ -403,7 +410,7 @@ export const RollView = (props) => {
                   <input
                     type="checkbox"
                     {...register("public")}
-                    placeholder={"false"}
+                    placeholder={"true"}
                     className="
                         ml-2 mt-2 text-base px-4 py-2 border
                         border-gray-300 rounded-lg
