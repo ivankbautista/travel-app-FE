@@ -8,7 +8,7 @@ export const Companions = (props) => {
   );
   return (
     <div>
-        <div className="h-[92vh] bg-gradient-to-b from-[#26083d] to-[#3d135e] flex flex-wrap snap-center">
+        <div className="h-[92vh] bg-gradient-to-b from-atlas-600 to-atlas-500 flex flex-wrap snap-center">
             <RollBorder />
             <div className="grow flex items-center justify-center w-3/4">
                     <div className="flex flex-col text-xs">

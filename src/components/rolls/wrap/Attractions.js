@@ -8,7 +8,7 @@ export const Attractions = (props) => {
   );
   return (
         <div>
-            <div className="h-[92vh] bg-gradient-to-b from-[#381254] to-atlas-600 flex flex-wrap snap-center">
+            <div className="h-[92vh] bg-gradient-to-b from-atlas-500 to-atlas-600 flex flex-wrap snap-center">
                 <RollBorder />
                 <div className="grow flex items-center justify-center w-3/4">
                     <div className="flex flex-col text-xs">

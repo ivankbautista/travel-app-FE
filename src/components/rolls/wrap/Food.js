@@ -8,7 +8,7 @@ export const Food = (props) => {
   );
   return (
     <div>
-        <div className="h-[92vh] bg-gradient-to-b from-[#51157d] to-[#381254] flex flex-wrap snap-center">
+        <div className="h-[92vh] bg-gradient-to-b from-atlas-700 to-atlas-600 flex flex-wrap snap-center">
             <RollBorder />
             <div className="grow flex items-center justify-center">
                 <div className="flex flex-wrap w-[50vw] h-[70vh] items-center justify-center overflow-hidden">

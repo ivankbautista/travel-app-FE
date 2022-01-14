@@ -8,7 +8,7 @@ export const Fashion = (props) => {
   );
   return (
     <div>
-        <div className="h-[92vh] w-[100vw] bg-gradient-to-b from-[#51157d] to-[#381254] flex flex-wrap snap-center">
+        <div className="h-[92vh] w-[100vw] bg-gradient-to-b from-atlas-600 to-atlas-500 flex flex-wrap snap-center">
             <RollBorder />
             <div className="grow flex items-center justify-center">
                 <div className="font-extrabold text-5xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 w-[30vw] text-center">
