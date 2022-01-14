@@ -7,9 +7,8 @@ export const ExploreEntry = (props) => {
 
                 <div className="ml-3 flex-col text-white">
                     <div className="pt-1">
-                        <div className="flex mb-2">
-                            <p>📌</p>
-                            <span className="italic font-bold">{props.exploreEntry.city}</span>
+                    <div className="flex mb-2 text-lg">
+                        <p><span className="italic font-bold">{props.exploreEntry.title}</span> | 📌 <span className="italic font-bold">{props.exploreEntry.city}</span> </p>
                         </div>
                         <h2>{props.exploreEntry.category}</h2>
                         <h2 className="font-semibold mt-1">{props.exploreEntry.date}</h2>
