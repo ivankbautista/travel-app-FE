@@ -15,7 +15,7 @@ export const Attractions = (props) => {
                         <div className="flex flex-wrap items-center justify-center flex-row h-40 w-[75vw] overflow-hidden">
                             {content}
                         </div>
-                        <div className="font-bold text-5xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 text-center mt-5 mb-5 w-[75vw]">Enjoy sightseeing?</div>
+                        <div className="font-extrabold text-4xl bg-clip-text text-transparent bg-gradient-to-tr from-atlas-300 to-atlas-100 text-center mt-5 mb-5 w-[75vw]">Enjoy sightseeing?</div>
                         <div className="flex flex-wrap items-center justify-center flex-row-reverse h-40 w-[75vw] overflow-hidden">
                             {content}
                         </div>
