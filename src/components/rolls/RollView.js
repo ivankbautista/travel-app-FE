@@ -598,7 +598,7 @@ export const RollView = (props) => {
                             <input
                               type="checkbox"
                               {...register("public")}
-                              placeholder={"false"}
+                              defaultValue={entries.filter((entry) => entry.id === specificID)[0].public}
                               className="
                         ml-2 mt-2 text-base px-4 py-2 border
                         border-gray-300 rounded-lg
